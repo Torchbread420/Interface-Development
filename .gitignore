@@ -1,8 +1,10 @@
 # Visual Studio
 .vs/
 
-
 obj/
+bin/
 
+/.vs/
 /BackOffice/bin/
 /BackOffice/obj/
+/.vs/
