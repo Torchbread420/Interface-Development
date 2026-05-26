@@ -7,5 +7,5 @@ bin/
 /.vs/
 /BackOffice/bin/
 /BackOffice/obj/
-/.vs/
+
 /.vs/slnx.sqlite
