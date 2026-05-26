@@ -8,3 +8,4 @@ bin/
 /BackOffice/bin/
 /BackOffice/obj/
 /.vs/
+/.vs/slnx.sqlite
