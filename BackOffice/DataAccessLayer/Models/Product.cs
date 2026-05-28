@@ -19,6 +19,12 @@ namespace DataAccessLayer.Models
 
         public string ImagePath { get; set; }
 
+        public decimal KostPrice {  get; set; }
+
+        public int Availability {  get; set; }
+
+        public string Type {  get; set; }
+
         public ICollection<Order> Orders { get; } = new List<Order>();
 
         public ICollection<Part> Parts { get; } = new List<Part>();

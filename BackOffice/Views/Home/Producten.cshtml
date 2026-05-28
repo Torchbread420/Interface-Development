@@ -9,7 +9,12 @@
         {
             <div class="product">
                 <input type="checkbox" class="bulk-checkbox" asp-action="checkboxOn-@product.Id" />
-                <div class="product-title">@product.Name</div>
+                <div class="id-product">@product.Id</div>
+                <div class="title-product">@product.Name</div>
+                <div class="type-product">@product.Type</div>
+                <div class="availability-product">@product.Availability</div>
+                <div class="kostPrijs-product">@product.KostPrice</div>
+                <div class="beschikbaarheid-product">@product.Price</div>
                 <div class="btnContainer">
                     <button type="button" class="edit-product" asp-action="edit-product-@product.Id">edit</button>
                     <button type="button" class="remove-product" asp-action="remove-product-@product.Id">remove</button>
