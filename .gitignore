@@ -17,3 +17,7 @@ bin/*
 /.vs/*
 /BackOffice/bin/*
 /BackOffice/obj/*
+
+BackOffice/obj/*
+/BackOffice/obj/Debug/net8.0/*
+/BackOffice/obj/*
