@@ -1,0 +1,20 @@
+﻿@model BackOffice.Controllers.ProductenController;
+@{
+    ViewData["Title"] = "Alle producten";
+}
+<section class="main">
+
+    <div class="productenContainer">
+        @foreach ( var product in @Model.Producten)
+        {
+            <div class="product">
+                <input type="checkbox" class="bulk-checkbox" asp-action="checkboxOn-@product.Id" />
+                <div class="product-title">@product.Name</div>
+                <div class="btnContainer">
+                    <button type="button" class="edit-product" asp-action="edit-product-@product.Id">edit</button>
+                    <button type="button" class="remove-product" asp-action="remove-product-@product.Id">remove</button>
+                </div>
+            </div>
+        }
+    </div>
+</section>

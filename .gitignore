@@ -9,3 +9,11 @@ bin/
 /BackOffice/obj/
 
 /.vs/slnx.sqlite
+/BackOffice/obj/Debug/
+
+obj/*
+bin/*
+
+/.vs/*
+/BackOffice/bin/*
+/BackOffice/obj/*
