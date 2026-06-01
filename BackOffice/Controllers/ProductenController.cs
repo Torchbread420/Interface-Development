@@ -1,23 +1,65 @@
 using BackOffice.Models;
 using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace BackOffice.Controllers
 {
-    public class ProductenController : Controller
+    public class ProductenController(ILogger<ProductenController> logger, ProductRepository productService) : Controller
     {
-        private readonly ILogger<ProductenController> _logger;
+        private readonly ILogger<ProductenController> _logger = logger;
+        private readonly ProductRepository _productService = productService;
+        public List<Product>? Producten;
+        public Product? ProductEditForm = new Product();
 
-        public ProductenController(ILogger<ProductenController> logger)
+
+
+        // Edit form for a product
+        // TEMP: should add a edit form before editing a product
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            _logger = logger;
+            var product = _productService.GetProductById(id);
+            if (product == null) return NotFound();
+            return View(product);
         }
 
-        public List<Product> Producten;
+        // Save edited product
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            if (!ModelState.IsValid) return View(product);
+            _productService.UpdateProduct(product);
+            return RedirectToAction(nameof(Index));
+        }
 
+        // Remove a product
+        [HttpPost]
+        public IActionResult Remove(int id)
+        {
+            _productService.DeleteProductById(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // Handle bulk checkbox selection
+        // TEMP: should add a edit step or a confirmation step before deleting or editing multiple products
+        [HttpPost]
+        public IActionResult BulkAction(List<int> selectedIds, string action)
+        {
+            if (selectedIds == null || !selectedIds.Any())
+                return RedirectToAction(nameof(Index));
+
+            if (action == "delete") _productService.DeleteProductsById(selectedIds);
+            if (action == "edit") _productService.UpdateProductsById(selectedIds);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // renders the list view on load
         public IActionResult Index()
         {
+            Producten = _productService.GetAllProducts().ToList();
             return View();
         }
 

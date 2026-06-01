@@ -23,10 +23,25 @@ namespace DataAccessLayer.Models
 
         public int Availability {  get; set; }
 
+        public int MinimumAvailablility { get; set; }
+
         public string Type {  get; set; }
+
+        public decimal SalePrice { get; set; }
 
         public ICollection<Order> Orders { get; } = new List<Order>();
 
         public ICollection<Part> Parts { get; } = new List<Part>();
+
+        public Product()
+        {
+            SalePrice = CalculateSalePrice();
+        }
+        private decimal CalculateSalePrice()
+        {
+            if (Price == 0) return 0;
+            return KostPrice / Price;
+        }
     }
+    
 }
