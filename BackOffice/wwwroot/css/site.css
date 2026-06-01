@@ -20,3 +20,87 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.sidebar {
+    width: 200px;
+    background-color: #1e2a3a; /* donkerblauw uit het design */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+    .sidebar a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        text-decoration: none !important;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            margin: 0 10px;
+            padding: 10px;
+        }
+
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px 30px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .sidebar-nav li a {
+        padding: 10px 20px;
+    }
+
+.sidebar-logout {
+    padding: 10px 20px;
+}
+
+.stat-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.stat-icon-blue {
+    background-color: #e8f0fe;
+    color: #4285f4;
+}
+
+.stat-icon-red {
+    background-color: #fce8e8;
+    color: #ea4335;
+}
+
+.stat-icon-green {
+    background-color: #e8f5e9;
+    color: #34a853;
+}
+
