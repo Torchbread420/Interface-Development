@@ -40,11 +40,13 @@
         <label for="edit-description">Description:</label>
         <input type="text" id="edit-description" name="edit-description" value="@Model?.ProductEditForm?.Description" />
         <!-- Availability -->
-        <label for="edit-availability">Availability:</label>
-        <input type="number" id="edit-availability" name="edit-availability" value="@Model?.ProductEditForm?.Availability" />
-        <!-- min. Availability -->
-        <label for="edit-min-availability">minimum Availability:</label>
-        <input type="number" id="edit-min-availability" name="edit-min-availability" value="@Model?.ProductEditForm?.MinimumAvailablility" />
+        <div class="availabilityContainer">
+            <label for="edit-availability">Availability:</label>
+            <input type="number" id="edit-availability" name="edit-availability" value="@Model?.ProductEditForm?.Availability" />
+            <!-- min. Availability -->
+            <label for="edit-min-availability">minimum Availability:</label>
+            <input type="number" id="edit-min-availability" name="edit-min-availability" value="@Model?.ProductEditForm?.MinimumAvailablility" />
+        </div>
         <!-- Image path -->
         <label for="edit-imagePath">Image Path:</label>
         <input type="text" id="edit-imagePath" name="edit-imagePath" value="@Model?.ProductEditForm?.ImagePath" />
@@ -58,11 +60,28 @@
         <input type="number" id="edit-kost-price" name="edit-kost-price" value="@Model?.ProductEditForm?.KostPrice" /><span class="currency">€</span>
         <!-- sale price -->
         <label for="edit-sale-price">Sale Price:</label>
-        <input type="number" id="edit-sale-price" name="edit-sale-price" value="@Model?.ProductEditForm?.SalePrice" /><span class="percentage">%</span>
-        
+        <input type="number" id="edit-sale-price" name="edit-sale-price" value="@Model?.ProductEditForm?.SalePercentage" /><span class="percentage">%</span>
+    </div>
+    <div class="buttonContainer">
+        <button class="edit-cancel-btn editForm-Btn" asp-action="editForm-Cancel">Cancel</button>
+        <button class="edit-save-btn editForm-Btn" asp-action="editForm-save">Save</button>
     </div>
 </section>
 
 <section class="product-remove-confirmation">
+    <h3 class="removeConfirmation-text">weet je zeker dat je dit item wilt verwijderen?</h3>
+    <div class="buttonContainer">
+        <button class="removeConfirmation-cancel-btn removeConfirmation-Btn" asp-action="removeConfirmation-Cancel">Cancel</button>
+        <button class="removeConfirmation-save-btn removeConfirmation-Btn" asp-action="removeConfirmation-save">Save</button>
+    </div>
+</section>
 
+<section class="product-bulk-edit">
+    <h4 class="bulkEdit-text">Vervang alle geselecteerde info</h4>
+    <!-- abs price -->
+    <label for="bulkEdit-absPrice">Absolute Price:</label>
+    <input type="number" id="bulkEdit-absPrice" name="bulkEdit-absPrice" value="@Model?.BulkEdit?.AbsolutePrice" /><span class="currency">€</span>
+    <!-- sale percentage -->
+    <label for="bulkEdit-sale">korting / verhoging</label>
+    <input type="number" id="bulkEdit-sale" name="bulkEdit-sale" value="@Model?.BulkEdit?.SalePercentage" /><span class="percentage">%</span>
 </section>

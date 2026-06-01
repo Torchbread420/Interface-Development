@@ -27,7 +27,7 @@ namespace DataAccessLayer.Models
 
         public string Type {  get; set; }
 
-        public decimal SalePrice { get; set; }
+        public decimal SalePercentage { get; set; }
 
         public ICollection<Order> Orders { get; } = new List<Order>();
 
@@ -35,12 +35,12 @@ namespace DataAccessLayer.Models
 
         public Product()
         {
-            SalePrice = CalculateSalePrice();
+            SalePercentage = CalculateSalePercentage();
         }
-        private decimal CalculateSalePrice()
+        private decimal CalculateSalePercentage()
         {
             if (Price == 0) return 0;
-            return KostPrice / Price;
+            return (Price - KostPrice) / Price * 100;
         }
     }
     

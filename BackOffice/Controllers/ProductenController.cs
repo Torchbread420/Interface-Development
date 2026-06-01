@@ -1,3 +1,4 @@
+using BackOffice.DataAccessLayer.Models;
 using BackOffice.Models;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
@@ -11,6 +12,7 @@ namespace BackOffice.Controllers
         private readonly ILogger<ProductenController> _logger = logger;
         private readonly ProductRepository _productService = productService;
         public List<Product>? Producten;
+        public BulkEdit? BulkEdit = new();
         public Product? ProductEditForm = new Product();
 
 
