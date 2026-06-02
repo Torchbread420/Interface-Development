@@ -45,5 +45,10 @@ namespace DataAccessLayer.Repositories
             _context.Users.Update(user);
             _context.SaveChanges();
         }
+
+        public bool UserExists(string username, string password)
+        {
+            return _context.Users.Any(u => u.Name == username && u.Password == password);
+        }
     }
 }

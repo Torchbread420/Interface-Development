@@ -1,4 +1,7 @@
 using BackOffice.Models;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,10 +10,11 @@ namespace BackOffice.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUserRepository _userRepository;
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository)
         {
             _logger = logger;
+            _userRepository = userRepository;
         }
 
         public IActionResult Index()
@@ -29,8 +33,13 @@ namespace BackOffice.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignIn()
+        public IActionResult CheckLogin(LoginViewModel model)
         {
+            bool result = _userRepository.UserExists(model.Username, model.Password);
+            if (!result) {
+                return RedirectToAction("Login");
+            }
+
             return RedirectToAction("Index", "Home");
         }
 

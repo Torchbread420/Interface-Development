@@ -18,5 +18,7 @@ namespace DataAccessLayer.Interfaces
         public void UpdateUser(User user);
 
         public void DeleteUser(User user);
+
+        public bool UserExists(string username, string password);
     }
 }

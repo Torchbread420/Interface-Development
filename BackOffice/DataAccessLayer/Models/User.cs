@@ -17,10 +17,21 @@ namespace DataAccessLayer.Models
         public string Name { get; set; }
 
         [Required]
+        public string Password { get; set; }
+
+        [Required] 
+        public string Email { get; set; }
+
+        [Required]
         public string Address { get; set; }
 
-        public bool Active { get; set; }
+        [Required]
+        public DateOnly DateOfBirth { get; set; }
 
+        public int PhoneNumber { get; set; }
+
+        public string? UserType { get; set; } // Mocht er later een onderscheid gemaakt worden tussen verschillende soorten gebruikers, zoals beheerders, medewerkers, etc.
+        
         public ICollection<Order> Orders { get; } = new List<Order>();
     }
 }

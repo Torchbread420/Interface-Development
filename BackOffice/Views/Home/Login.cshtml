@@ -36,11 +36,11 @@
                         <h3>Meld u aan</h3>
                         <p>Voer uw gegevens in om toegang te krijgen.</p>
                     </div>
-                    <form asp-action="Signin" method="post">
+                    <form asp-action="CheckLogin" method="post">
                         <h6>Gebruikersnaam</h6>
-                        <input class="gebruikernaam" type="text" name="gebruikersnaam" placeholder="Uw gebruikersnaam" />
+                        <input class="gebruikernaam" type="text" name="username" placeholder="Uw gebruikersnaam" required/>
                         <h6>Wachtwoord</h6>
-                        <input class="wachtwoord" type="password" name="wachtwoord" placeholder="Uw wachtwoord" />
+                        <input class="wachtwoord" type="password" name="password" placeholder="Uw wachtwoord" required/>
                         <button class="loginbtn" type="submit">Inloggen</button>
                     </form>
                 </div>
