@@ -32,43 +32,7 @@
 </section>
 
 <section class="product-editForm" data-hidden="true">
-    <div class="left-side-container">
-        <!-- Name -->
-        <label for="edit-name">Name:</label>
-        <input type="text" id="edit-name" name="edit-name" value="@Model?.ProductEditForm?.Name" />
-        <!-- Type -->
-        <label for="edit-type">Type:</label>
-        <input type="text" id="edit-type" name="edit-type" value="@Model?.ProductEditForm?.Type" />
-        <!-- Description -->
-        <label for="edit-description">Description:</label>
-        <input type="text" id="edit-description" name="edit-description" value="@Model?.ProductEditForm?.Description" />
-        <!-- Availability -->
-        <div class="availabilityContainer">
-            <label for="edit-availability">Availability:</label>
-            <input type="number" id="edit-availability" name="edit-availability" value="@Model?.ProductEditForm?.Availability" />
-            <!-- min. Availability -->
-            <label for="edit-min-availability">minimum Availability:</label>
-            <input type="number" id="edit-min-availability" name="edit-min-availability" value="@Model?.ProductEditForm?.MinimumAvailablility" />
-        </div>
-        <!-- Image path -->
-        <label for="edit-imagePath">Image Path:</label>
-        <input type="text" id="edit-imagePath" name="edit-imagePath" value="@Model?.ProductEditForm?.ImagePath" />
-    </div>
-    <div class="right-side-container">
-        <!-- abs price -->
-        <label for="edit-abs-price">Absolute Price:</label>
-        <input type="number" id="edit-abs-price" name="edit-abs-price" value="@Model?.ProductEditForm?.Price" /><span class="currency">€</span>
-        <!-- kost price -->
-        <label for="edit-kost-price">Cost Price:</label>
-        <input type="number" id="edit-kost-price" name="edit-kost-price" value="@Model?.ProductEditForm?.KostPrice" /><span class="currency">€</span>
-        <!-- sale price -->
-        <label for="edit-sale-price">Sale Price:</label>
-        <input type="number" id="edit-sale-price" name="edit-sale-price" value="@Model?.ProductEditForm?.SalePercentage" /><span class="percentage">%</span>
-    </div>
-    <div class="buttonContainer">
-        <button class="edit-cancel-btn editForm-Btn" asp-action="editForm-Cancel">Cancel</button>
-        <button class="edit-save-btn editForm-Btn" asp-action="editForm-save">Save</button>
-    </div>
+    
 </section>
 
 <section class="product-remove-confirmation">
