@@ -1,4 +1,4 @@
-﻿@model BackOffice.Controllers.ProductenController;
+﻿@model BackOffice.DataAccessLayer.Models.ProductenViewModel;
 @{
     ViewData["Title"] = "Alle producten";
 }
@@ -9,7 +9,7 @@
         @foreach ( var product in @Model.Producten)
         {
             <div class="product">
-                <input type="checkbox" class="bulk-checkbox" asp-action="checkboxOn-@product.Id" />
+                <input type="checkbox" class="bulk-checkbox" name="selectedIds" value="@product.Id" />
                 <div class="id-product">@product.Id</div>
                 <div class="title-product">@product.Name</div>
                 <div class="type-product">@product.Type</div>
@@ -17,8 +17,11 @@
                 <div class="kostPrijs-product">@product.KostPrice</div>
                 <div class="beschikbaarheid-product">@product.Price</div>
                 <div class="btnContainer">
-                    <button type="button" class="edit-product" asp-action="edit-product" asp-action-id="@product.Id">edit</button>
-                        <button type="button" class="remove-product" asp-action="remove-product" asp-action-id="@product.Id">remove</button>
+                        <a asp-action="Edit" asp-route-id="@product.Id" class="edit-product" >Edit</a>
+                        <form asp-action="Remove" method="post">
+                            <input type="hidden" name="id" value="@product.Id" />
+                            <button type="submit" class="remove-product">Remove</button>
+                        </form>
                 </div>
             </div>
         }

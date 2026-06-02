@@ -1,4 +1,4 @@
-namespace BackOffice.Models
+namespace BackOffice.DataAccessLayer.Models
 {
     public class ErrorViewModel
     {

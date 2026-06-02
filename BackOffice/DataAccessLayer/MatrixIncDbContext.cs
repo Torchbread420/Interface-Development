@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using BackOffice.DataAccessLayer.Models;
+using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer

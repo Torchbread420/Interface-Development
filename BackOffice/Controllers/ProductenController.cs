@@ -1,6 +1,5 @@
 using BackOffice.DataAccessLayer.Models;
 using BackOffice.Models;
-using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -24,14 +23,15 @@ namespace BackOffice.Controllers
         {
             var product = _productService.GetProductById(id);
             if (product == null) return NotFound();
-            return View(product);
+            return PartialView("_EditProduct", product);
         }
 
         // Save edited product
         [HttpPost]
         public IActionResult Edit(Product product)
         {
-            if (!ModelState.IsValid) return View(product);
+            if (!ModelState.IsValid) return PartialView("_EditProduct", product);
+                
             _productService.UpdateProduct(product);
             return RedirectToAction(nameof(Index));
         }
@@ -56,6 +56,28 @@ namespace BackOffice.Controllers
             if (action == "edit") _productService.UpdateProductsById(selectedIds);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult GetProduct(int id)
+        {
+            var product = _productService.GetProductById(id);
+
+            if (product == null)
+                return NotFound();
+
+            return Json(product);
+        }
+
+        [HttpPost]
+        public IActionResult SaveProduct(Product product)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            _productService.UpdateProduct(product);
+
+            return Ok();
         }
 
         // renders the list view on load

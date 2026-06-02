@@ -1,0 +1,40 @@
+﻿@page
+@model Backoffice.DataAccessLayer.Models.Product;
+@{
+
+}
+
+
+<form asp-action="Edit" method="post">
+
+    <input asp-for="Id" type="hidden" />
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+
+    <label asp-for="Type"></label>
+    <input asp-for="Type" />
+
+    <label asp-for="Description"></label>
+    <input asp-for="Description" />
+
+    <label asp-for="Availability"></label>
+    <input asp-for="Availability" />
+
+    <label asp-for="MinimumAvailablility"></label>
+    <input asp-for="MinimumAvailablility" />
+
+    <label asp-for="Price"></label>
+    <input asp-for="Price" />
+
+    <label asp-for="KostPrice"></label>
+    <input asp-for="KostPrice" />
+
+    <label asp-for="SalePercentage"></label>
+    <input asp-for="SalePercentage" />
+
+    <button type="submit">
+        Save
+    </button>
+
+</form>
