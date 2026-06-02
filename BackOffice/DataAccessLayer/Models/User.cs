@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models
 {
-    public class Customer
+    public class User
     {
         [Key]
         [Required]

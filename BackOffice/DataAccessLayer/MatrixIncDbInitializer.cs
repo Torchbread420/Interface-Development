@@ -11,8 +11,8 @@ namespace DataAccessLayer
     {
         public static void Initialize(MatrixIncDbContext context)
         {
-            // Look for any customers.
-            if (context.Customers.Any())
+            // Look for any users.
+            if (context.Users.Any())
             {
                 return;   // DB has been seeded
             }
@@ -21,20 +21,20 @@ namespace DataAccessLayer
             // - Denk aan de m3 boutjes, moertjes en ringetjes.
             // - Denk aan namen van schepen
             // - Denk aan namen van vliegtuigen            
-            var customers = new Customer[]
+            var users = new User[]
             {
-                new Customer { Name = "Neo", Address = "123 Elm St" , Active=true},
-                new Customer { Name = "Morpheus", Address = "456 Oak St", Active = true },
-                new Customer { Name = "Trinity", Address = "789 Pine St", Active = true }
+                new User { Name = "Neo", Address = "123 Elm St" , Active=true},
+                new User { Name = "Morpheus", Address = "456 Oak St", Active = true },
+                new User { Name = "Trinity", Address = "789 Pine St", Active = true }
             };
-            context.Customers.AddRange(customers);
+            context.Users.AddRange(users);
 
             var orders = new Order[]
             {
-                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-01-01")},
-                new Order { Customer = customers[0], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { Customer = customers[1], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { Customer = customers[2], OrderDate = DateTime.Parse("2021-03-01")}
+                new Order { User = users[0], OrderDate = DateTime.Parse("2021-01-01")},
+                new Order { User = users[0], OrderDate = DateTime.Parse("2021-02-01")},
+                new Order { User = users[1], OrderDate = DateTime.Parse("2021-02-01")},
+                new Order { User = users[2], OrderDate = DateTime.Parse("2021-03-01")}
             };  
             context.Orders.AddRange(orders);
 

@@ -9,40 +9,40 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-    public class CustomerRepository : ICustomerRepository
+    public class UserRepository : IUserRepository
     {
         private readonly MatrixIncDbContext _context;
 
-        public CustomerRepository(MatrixIncDbContext context)
+        public UserRepository(MatrixIncDbContext context)
         {
             _context = context;
         }
 
-        public void AddCustomer(Customer customer)
+        public void AddUser(User user)
         {
-            _context.Customers.Add(customer);
+            _context.Users.Add(user);
             _context.SaveChanges();
         }
 
-        public void DeleteCustomer(Customer customer)
+        public void DeleteUser(User user)
         {
-            _context.Customers.Remove(customer);
+            _context.Users.Remove(user);
             _context.SaveChanges();
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<User> GetAllUsers()
         {
-            return _context.Customers.Include(c => c.Orders);
+            return _context.Users.Include(u => u.Orders);
         }
 
-        public Customer? GetCustomerById(int id)
+        public User? GetUserById(int id)
         {
-            return _context.Customers.Include(c => c.Orders).FirstOrDefault(c => c.Id == id);
+            return _context.Users.Include(u => u.Orders).FirstOrDefault(u => u.Id == id);
         }
 
-        public void UpdateCustomer(Customer customer)
+        public void UpdateUser(User user)
         {
-            _context.Customers.Update(customer);
+            _context.Users.Update(user);
             _context.SaveChanges();
         }
     }
