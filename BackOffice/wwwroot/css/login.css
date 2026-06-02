@@ -113,6 +113,14 @@ body,
     font-size: 1rem;
 }
 
+.error {
+    background-color: #ff767624;
+    border: 1px solid #cb272754;
+    color: #cd0000;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -165,9 +173,5 @@ form h6 {
 
     .infocontainer {
         display: none;
-    }
-
-    .loginbox {
-        width: 90%;
     }
 }

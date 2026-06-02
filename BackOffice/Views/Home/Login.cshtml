@@ -36,6 +36,12 @@
                         <h3>Meld u aan</h3>
                         <p>Voer uw gegevens in om toegang te krijgen.</p>
                     </div>
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="error">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
                     <form asp-action="CheckLogin" method="post">
                         <h6>Gebruikersnaam</h6>
                         <input class="gebruikernaam" type="text" name="username" placeholder="Uw gebruikersnaam" required/>

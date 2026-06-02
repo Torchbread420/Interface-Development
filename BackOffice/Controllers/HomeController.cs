@@ -37,7 +37,8 @@ namespace BackOffice.Controllers
         {
             bool result = _userRepository.UserExists(model.Username, model.Password);
             if (!result) {
-                return RedirectToAction("Login");
+                ViewBag.ErrorMessage = "Incorrect username or password.";
+                return View("Login");
             }
 
             return RedirectToAction("Index", "Home");
