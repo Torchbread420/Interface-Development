@@ -104,3 +104,61 @@ body {
     color: #34a853;
 }
 
+/* ============================================
+   SNELLE ACTIES LINKS
+   Elke link is een flex-row met icoon, tekst en pijl
+   ============================================ */
+.quick-action-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    text-decoration: none !important;
+    color: inherit !important;
+    border-bottom: 1px solid #f0f0f0; /* Subtiele scheidingslijn */
+}
+
+    /* Laatste link heeft geen border onderaan */
+    .quick-action-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Hover effect: lichte achtergrond */
+    .quick-action-link:hover {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+/* ============================================
+   MELDINGEN
+   Elke melding is een gekleurde balk met tekst en tijd
+   ============================================ */
+.melding {
+    display: flex;
+    justify-content: space-between; /* Tekst links, tijd rechts */
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Oranje melding: voorraad waarschuwingen */
+.melding-warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+/* Blauwe melding: nieuwe bestellingen */
+.melding-info {
+    background-color: #d1ecf1;
+    border-left: 4px solid #0dcaf0;
+}
+
+/* Groene melding: voltooide acties */
+.melding-success {
+    background-color: #d4edda;
+    border-left: 4px solid #198754;
+}
