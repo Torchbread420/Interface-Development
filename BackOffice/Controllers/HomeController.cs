@@ -1,5 +1,4 @@
 using BackOffice.Models;
-using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;

@@ -147,7 +147,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var order in (List<DataAccessLayer.Models.Order>)ViewBag.RecentOrders)
+                @foreach (Order order in ViewBag.RecentOrders)
                 {
                     <tr>
                         <td>Bestelling #@order.Id</td>

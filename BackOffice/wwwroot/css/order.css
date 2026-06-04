@@ -1,0 +1,209 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter',sans-serif;
+    background: #eef3f9;
+    color: #24324a;
+}
+
+.page {
+    padding: 30px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: #8ea0bb;
+    font-size: 15px;
+}
+
+    .breadcrumb a {
+        text-decoration: none;
+        color: #8ea0bb;
+        font-weight: 500;
+    }
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    width: 430px;
+    height: 52px;
+    background: white;
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+    .search-box svg {
+        width: 22px;
+        height: 22px;
+        color: #91a1b8;
+    }
+
+    .search-box input {
+        flex: 1;
+        border: none;
+        outline: none;
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
+.filter-btn {
+    width: 52px;
+    height: 52px;
+    border: none;
+    background: white;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #72829d;
+    border: 1px solid #dbe3ee;
+}
+
+select {
+    width: 180px;
+    height: 52px;
+    border-radius: 14px;
+    border: 1px solid #dbe3ee;
+    background: white;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #334155;
+}
+
+.results {
+    margin-left: auto;
+    color: #8ea0bb;
+    font-weight: 500;
+}
+
+.orders-table {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 2.2fr /* Naam */
+    2.3fr /* Product */
+    1.5fr /* Klant */
+    1.3fr /* Datum */
+    0.8fr /* Tijd */
+    1.4fr /* Status */
+    1fr /* Bedrag */
+    50px; /* Arrow */
+
+    align-items: center;
+    min-height: 72px;
+    padding: 0 24px;
+    border-bottom: 1px solid #edf1f6;
+}
+
+.table-header {
+    background: #f7f9fc;
+    font-size: 14px;
+    font-weight: 700;
+    color: #61728d;
+    min-height: 56px;
+}
+
+.table-row:not(.table-header) {
+    font-size: 16px;
+    color: #334155;
+}
+
+.arrow {
+    text-align: center;
+    font-size: 28px;
+    color: #c2cad7;
+    cursor: pointer;
+}
+
+thead {
+    background: #f7f9fc;
+}
+
+    thead th {
+        text-align: left;
+        padding: 22px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #61728d;
+    }
+
+tbody td {
+    padding: 22px;
+    border-top: 1px solid #edf1f6;
+    color: #334155;
+    font-size: 16px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.completed {
+    background: #dff7e6;
+    color: #1d8f49;
+}
+
+.processing {
+    background: #dce8ff;
+    color: #2b67e6;
+}
+
+.shipped {
+    background: #f0dfff;
+    color: #8a2be2;
+}
+
+.cancelled {
+    background: #ffe0e0;
+    color: #d62b2b;
+}
+.table-row:hover:not(.table-header) {
+    background: #fafcff;
+}
+
+tbody tr:hover {
+    background: #fafcff;
+}
+
+tbody td:last-child {
+    text-align: center;
+    width: 60px;
+    color: #c2cad7;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+
+

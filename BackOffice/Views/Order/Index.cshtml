@@ -1,0 +1,93 @@
+﻿@model BackOffice.Models.OrderViewModel;
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<body>
+
+    <div class="page">
+
+        <div class="breadcrumb">
+            <a href="#">Home</a>
+            <span>›</span>
+            <span>Orders</span>
+        </div>
+
+        <h1>Orders</h1>
+
+        <div class="toolbar">
+
+            <div class="search-box">
+                <input type="text" placeholder="Zoeken...">
+            </div>
+
+            <button class="filter-btn">
+                ☰
+            </button>
+
+            <select>
+                <option>Alle</option>
+                <option>Voltooid</option>
+                <option>In behandeling</option>
+                <option>Verzonden</option>
+                <option>Geannuleerd</option>
+            </select>
+
+            <div class="results">
+                3 resultaten
+            </div>
+
+        </div>
+
+        <div class="orders-table">
+
+            <div class="table-header table-row">
+                <div>NAAM</div>
+                <div>PRODUCT</div>
+                <div>KLANT</div>
+                <div>DATUM</div>
+                <div>TIJD</div>
+                <div>STATUS</div>
+                <div>BEDRAG</div>
+                <div></div>
+            </div>
+
+            <div class="table-row">
+                <div>Moer V6 3/4 Bestelling</div>
+                <div>Hex Bout M8 × 25</div>
+                <div>Jan de Vries</div>
+                <div>12-05-2025</div>
+                <div>09:15</div>
+                <div><span class="badge completed">Voltooid</span></div>
+                <div>€250.00</div>
+                <div class="arrow">›</div>
+            </div>
+
+            <div class="table-row">
+                <div>Tandwiel Set Bestelling</div>
+                <div>Stalen Tandwiel 32T</div>
+                <div>Petra Bakker</div>
+                <div>13-05-2025</div>
+                <div>11:30</div>
+                <div><span class="badge processing">In behandeling</span></div>
+                <div>€1200.00</div>
+                <div class="arrow">›</div>
+            </div>
+
+            <div class="table-row">
+                <div>Veerring Assortiment</div>
+                <div>Veerring DIN 127</div>
+                <div>Klaas Smit</div>
+                <div>14-05-2025</div>
+                <div>14:45</div>
+                <div><span class="badge shipped">Verzonden</span></div>
+                <div>€85.50</div>
+                <div class="arrow">›</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
