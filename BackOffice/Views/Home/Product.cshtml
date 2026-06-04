@@ -7,11 +7,23 @@
 <div class="container-fluid px-4 py-4">
     <div class="d-flex align-items-center mb-3">
         <h2 class="me-3">Producten</h2>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Producten</li>
-            </ol>
+    </div>
+
+    <!-- Sub-navbar: Voorraad overzicht | Voorraadbeheer | Categorieën -->
+    <div class="product-subnav mb-4">
+        <nav class="nav align-items-center">
+            <a asp-controller="Home" asp-action="Product" class="nav-link subnav-link active">
+                <i class="bi bi-layout-text-window-reverse me-2"></i>
+                Voorraad overzicht
+            </a>
+            <a asp-controller="Home" asp-action="VoorraadBeheer" class="nav-link subnav-link">
+                <i class="bi bi-tools me-2"></i>
+                Voorraad beheer
+            </a>
+            <a asp-controller="Home" asp-action="Categorieen" class="nav-link subnav-link">
+                <i class="bi bi-tags me-2"></i>
+                Categorieën
+            </a>
         </nav>
     </div>
 

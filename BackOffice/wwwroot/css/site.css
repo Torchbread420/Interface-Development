@@ -280,3 +280,67 @@ html {
 }
 
 /* end additions */
+
+/* product sub-navbar */
+.product-subnav {
+    padding: 8px 0;
+    margin-bottom: 18px;
+
+    /* two subtle separators above and below the subnav */
+    border-top: 1px solid #eef4fb;
+    border-bottom: 1px solid #eef4fb;
+
+    background: transparent;
+}
+
+/* nav row — single unit */
+.product-subnav .nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 0 2px;
+}
+
+/* link styles */
+.subnav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    color: #475569;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative; /* for underline pseudo element */
+    transition: color .12s ease;
+}
+
+/* icon sizing */
+.subnav-link .bi { font-size: 1rem; color: inherit; }
+
+/* hover */
+.subnav-link:hover {
+    color: #0f1724;
+}
+
+/* active: only text (and icon) becomes blue; no filled background */
+.subnav-link.active {
+    color: #256bff;
+}
+
+/* active underline: thin blue bar directly under the active link */
+.subnav-link.active::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #256bff;
+    left: 0;
+    right: 0;
+    bottom: -10px; /* distance from link baseline to underline */
+    border-radius: 2px;
+}
+
+/* responsive adjustments */
+@media (max-width: 767.98px) {
+    .product-subnav .nav { flex-wrap: wrap; gap: 10px; }
+    .subnav-link { padding: 8px 6px; font-size: 0.95rem; }
+}
