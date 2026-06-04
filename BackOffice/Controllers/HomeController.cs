@@ -5,20 +5,40 @@ using DataAccessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+
 namespace BackOffice.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IUserRepository _userRepository;
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository)
+
+        public HomeController(
+            ILogger<HomeController> logger,
+            IOrderRepository orderRepository,
+            IProductRepository productRepository,
+            IUserRepository userRepository)
         {
             _logger = logger;
+            _orderRepository = orderRepository;
+            _productRepository = productRepository;
             _userRepository = userRepository;
         }
 
         public IActionResult Index()
         {
+            var orders = _orderRepository.GetAllOrders().ToList();
+            var products = _productRepository.GetAllProducts().ToList();
+            var users = _userRepository.GetAllUsers().ToList();
+
+            ViewBag.TotalProducts = products.Count;
+            ViewBag.TotalOrders = orders.Count;
+            ViewBag.TotalUsers = users.Count;
+            ViewBag.RecentOrders = orders;
+            ViewBag.Products = products;
+
             return View();
         }
 

@@ -20,3 +20,145 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.sidebar {
+    width: 200px;
+    background-color: #1e2a3a; /* donkerblauw uit het design */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+    .sidebar a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        text-decoration: none !important;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            margin: 0 10px;
+            padding: 10px;
+        }
+
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px 30px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .sidebar-nav li a {
+        padding: 10px 20px;
+    }
+
+.sidebar-logout {
+    padding: 10px 20px;
+}
+
+.stat-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.stat-icon-blue {
+    background-color: #e8f0fe;
+    color: #4285f4;
+}
+
+.stat-icon-red {
+    background-color: #fce8e8;
+    color: #ea4335;
+}
+
+.stat-icon-green {
+    background-color: #e8f5e9;
+    color: #34a853;
+}
+
+/* ============================================
+   SNELLE ACTIES LINKS
+   Elke link is een flex-row met icoon, tekst en pijl
+   ============================================ */
+.quick-action-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    text-decoration: none !important;
+    color: inherit !important;
+    border-bottom: 1px solid #f0f0f0; /* Subtiele scheidingslijn */
+}
+
+    /* Laatste link heeft geen border onderaan */
+    .quick-action-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Hover effect: lichte achtergrond */
+    .quick-action-link:hover {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+/* ============================================
+   MELDINGEN
+   Elke melding is een gekleurde balk met tekst en tijd
+   ============================================ */
+.melding {
+    display: flex;
+    justify-content: space-between; /* Tekst links, tijd rechts */
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Oranje melding: voorraad waarschuwingen */
+.melding-warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+/* Blauwe melding: nieuwe bestellingen */
+.melding-info {
+    background-color: #d1ecf1;
+    border-left: 4px solid #0dcaf0;
+}
+
+/* Groene melding: voltooide acties */
+.melding-success {
+    background-color: #d4edda;
+    border-left: 4px solid #198754;
+}
