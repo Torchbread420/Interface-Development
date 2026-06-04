@@ -24,49 +24,48 @@
                     <span>BackOffice</span>
                 </div>
                 <!-- Nav links: Home, Personeel, Producten, Orders -->
-            <ul class="sidebar-nav">
-                <li>
-                    <a asp-controller="Home" asp-action="Index" class="active">
-                        <i class="bi bi-house"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-people"></i>
-                        <span>Personeel</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Producten" asp-action="Index">
-                        <i class="bi bi-box-seam"></i>
-                        <span>Producten</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-cart"></i>
-                        <span>Orders</span>
-                    </a>
-                </li>
-            </ul>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a asp-controller="Home" asp-action="Index" class="active">
+                            <i class="bi bi-house"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Personeel">
+                            <i class="bi bi-people"></i>
+                            <span>Personeel</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Producten">
+                            <i class="bi bi-box-seam"></i>
+                            <span>Producten</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Order">
+                            <i class="bi bi-cart"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                </ul>
                 <!-- Uitloggen onderaan -->
-            <div class="mt-auto">
-                <a href="#" class="sidebar-logout">
-                    <i class="bi bi-box-arrow-left"></i>
-                    <span>Uitloggen</span>
-                </a>
-            </div>
+                <div class="mt-auto">
+                    <a asp-controller="Home" asp-action="Login" class="sidebar-logout">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <span>Uitloggen</span>
+                    </a>
+                </div>
             </nav>
 
             <!-- MAIN CONTENT -->
             <main class="flex-grow-1 p-4" style="background-color: #f0f2f5;">
-                <!-- Breadcrumb -->
-                <!-- Page title -->
                 @RenderBody()
             </main>
 
         </div>
         <!-- scripts -->
+        <script src="~/js/chart.js"></script>
 </body>
 </html>

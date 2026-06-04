@@ -42,6 +42,21 @@ namespace BackOffice.Controllers
             return View();
         }
 
+        public IActionResult Personeel()
+        {
+            return View();
+        }
+
+        public IActionResult Order()
+        {
+            return View();
+        }
+
+        public IActionResult Product()
+        {
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();
