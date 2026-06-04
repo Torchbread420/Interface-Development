@@ -1,0 +1,56 @@
+﻿@model BackOffice.Controllers.HomeController;
+@{
+    ViewData["Title"] = "Inloggen";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - BackOffice</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    </head>
+    <body>
+        <div class="maincontainer">
+            <div class="infocontainer">
+                <div class="infobox">
+                    <img class="logo" src="#" />
+                    <h1 class="titel">Onderdelen BackOffice</h1>
+                    <p class="title-beschrijving">Beheer uw voorraad van mechanische onderdelen, bestellingen en personeel op één plek.</p>
+                    <div class="categorie-kaarten">
+                        <div class="categorie-kaart">Bouten</div>
+                        <div class="categorie-kaart">Tandwielen</div>
+                        <div class="categorie-kaart">Lagers</div>
+                        <div class="categorie-kaart">Schroeven</div>
+                        <div class="categorie-kaart">Moeren</div>
+                        <div class="categorie-kaart">Veeringen</div>
+                    </div>
+                </div>
+            </div>
+            <div class="logincontainer">
+                <div class="loginbox">
+                    <div class="logininfo">
+                        <h3>Meld u aan</h3>
+                        <p>Voer uw gegevens in om toegang te krijgen.</p>
+                    </div>
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="error">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+                    <form asp-action="CheckLogin" method="post">
+                        <h6>Gebruikersnaam</h6>
+                        <input class="gebruikernaam" type="text" name="username" placeholder="Uw gebruikersnaam" required/>
+                        <h6>Wachtwoord</h6>
+                        <input class="wachtwoord" type="password" name="password" placeholder="Uw wachtwoord" required/>
+                        <button class="loginbtn" type="submit">Inloggen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
