@@ -1,0 +1,116 @@
+﻿@model BackOffice.Models.PaginatedProductViewModel
+@{
+    ViewData["Title"] = "Producten";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex align-items-center mb-3">
+        <h2 class="me-3">Producten</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Producten</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <small class="text-muted">Op voorraad</small>
+                        <div class="h5 mb-0">@Model.OnStockCount artikelen</div>
+                    </div>
+                    <div class="text-success fs-3">●</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <small class="text-muted">Laag voorraad</small>
+                        <div class="h5 mb-0">@Model.LowCount artikelen</div>
+                    </div>
+                    <div class="text-warning fs-3">●</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <small class="text-muted">Niet op voorraad</small>
+                        <div class="h5 mb-0">@Model.OutCount artikelen</div>
+                    </div>
+                    <div class="text-danger fs-3">●</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <form class="w-50" method="get" asp-action="Product">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input name="q" value="@Request.Query["q"]" type="text" class="form-control" placeholder="Zoeken op naam, categorie of SKU..." />
+                    </div>
+                </form>
+                <div class="text-muted">@Model.TotalCount artikelen</div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Naam</th>
+                            <th>SKU</th>
+                            <th>Categorie</th>
+                            <th>Locatie</th>
+                            <th class="text-end">Voorraad</th>
+                            <th class="text-end">Min.</th>
+                            <th class="text-end">Prijs/st.</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model.Items)
+                        {
+                            var badgeClass = p.Status == "Op voorraad" ? "bg-success" : p.Status == "Laag voorraad" ? "bg-warning text-dark" : "bg-danger";
+                        <tr>
+                            <td>@p.Name</td>
+                            <td class="text-muted">@p.SKU</td>
+                            <td>@p.Category</td>
+                            <td>@p.Location</td>
+                            <td class="text-end">@String.Format("{0:N0}", p.Stock)</td>
+                            <td class="text-end">@String.Format("{0:N0}", p.Min)</td>
+                            <td class="text-end">€@p.Price.ToString("0.00")</td>
+                            <td class="text-center">
+                                <span class="badge @badgeClass">@p.Status</span>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+                <nav>
+                    <ul class="pagination mb-0">
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            var active = i == Model.Page ? "active" : "";
+                            <li class="page-item @active">
+                                <a class="page-link" href="@Url.Action("Product", new { q = Request.Query["q"], page = i, pageSize = Model.PageSize })">@i</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
