@@ -1,9 +1,22 @@
-﻿namespace BackOffice.DataAccessLayer.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BackOffice.DataAccessLayer.Models
 {
     public class ProductenViewModel
     {
-        public List<Product> Producten { get; set; } = [];
+        [Required]
+        public List<Product> Producten { get; set; }
         public Product? ProductEditForm { get; set; }
-        public BulkEdit? BulkEdit { get; set; } = new();
+        public BulkEdit? BulkEdit { get; set; }
+
+        public ProductenViewModel() { }
+
+        public ProductenViewModel(List<Product> producten, Product? productEditForm = null, BulkEdit? bulkEdit = null)
+        {
+            Producten = producten;
+            ProductEditForm = productEditForm;
+            BulkEdit = bulkEdit;
+        }
     }
+
 }

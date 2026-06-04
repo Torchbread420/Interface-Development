@@ -1,0 +1,41 @@
+﻿@model BackOffice.DataAccessLayer.Models.ProductenViewModel;
+@{
+    ViewData["Title"] = "Alle producten";
+}
+<head>
+    <link rel="stylesheet" href="~/css/ProductIndex.css" asp-append-version="true" />
+</head>
+<section class="main">
+    <form asp-controller="Producten" asp-action="BulkAction" method="post" id="bulkForm">
+        <div class="productenContainer">
+
+            @foreach (var product in Model.Producten)
+            {
+                <div class="product">
+                    <input type="checkbox" class="bulk-checkbox" name="selectedIds" value="@product.Id" />
+
+                    <div class="id-product">@product.Id</div>
+                    <div class="title-product">@product.Name</div>
+                    <div class="type-product">@product.Type</div>
+                    <div class="availability-product">@product.Availability</div>
+                    <div class="kostPrijs-product">@product.KostPrice</div>
+                    <div class="beschikbaarheid-product">@product.Price</div>
+                    <div class="status-product @(product.Availability <= 0 ? "status-out" : product.Availability <= product.MinimumAvailablility ? "status-low"
+                                                      : "status-in")">
+                    <span>@product.Status</span>
+                </div>
+
+                    <a asp-controller="Producten" asp-action="Edit" asp-route-id="@product.Id" class="edit-product">Edit</a>
+                    <button type="button" class="remove-product" hx-post="/Producten/Remove/@product.Id" onclick="submitRemove(@product.Id)">Remove</button>
+                </div>
+            }
+
+            <!-- Hidden field to carry which button was clicked -->
+            <input type="hidden" name="action" id="bulkActionType" value="" />
+
+            <button type="button" class="bulk-action" onclick="submitBulk('edit')">Edit Selected</button>
+            <button type="button" class="bulk-action" onclick="submitBulk('delete')">Delete Selected</button>
+
+        </div>
+    </form>
+</section>

@@ -1,38 +1,37 @@
 using BackOffice.DataAccessLayer.Models;
+using DataAccessLayer.Interfaces;
 using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BackOffice.Controllers
 {
-    public class ProductenController(ILogger<ProductenController> logger, ProductRepository productService) : Controller
+    public class ProductenController(ILogger<ProductenController> logger, IProductRepository productService) : Controller
     {
         private readonly ILogger<ProductenController> _logger = logger;
-        private readonly ProductRepository _productService = productService;
-        public List<Product>? Producten;
-        public BulkEdit? BulkEdit = new();
-        public Product? ProductEditForm = new Product();
+        private readonly IProductRepository _productService = productService;
 
 
 
         // Edit form for a product
-        // TEMP: should add a edit form before editing a product
         [HttpGet]
         public IActionResult Edit(int id)
         {
             var product = _productService.GetProductById(id);
             if (product == null) return NotFound();
-            return PartialView("_EditProduct", product);
+            ProductenViewModel productenViewModel = new(productService.GetAllProducts().ToList(), product, null);
+            return PartialView("_EditProduct", productenViewModel);
         }
 
-        // Save edited product
+        // save edit
         [HttpPost]
-        public IActionResult Edit(Product product)
+        public IActionResult EditProduct(ProductenViewModel viewModel)
         {
-            if (!ModelState.IsValid) return PartialView("_EditProduct", product);
-                
+            Product? product = viewModel.ProductEditForm;
+            if (product == null) return NotFound();
             _productService.UpdateProduct(product);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Producten");
         }
 
         // Remove a product
@@ -40,7 +39,7 @@ namespace BackOffice.Controllers
         public IActionResult Remove(int id)
         {
             _productService.DeleteProductById(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Producten");
         }
 
         // Handle bulk checkbox selection
@@ -48,13 +47,24 @@ namespace BackOffice.Controllers
         [HttpPost]
         public IActionResult BulkAction(List<int> selectedIds, string action)
         {
-            if (selectedIds == null || !selectedIds.Any())
-                return RedirectToAction(nameof(Index));
+            if (selectedIds == null || selectedIds.Count == 0) return RedirectToAction("Index");
 
-            if (action == "delete") _productService.DeleteProductsById(selectedIds);
-            if (action == "edit") _productService.UpdateProductsById(selectedIds);
+            if (action == "delete")
+            {
+                _productService.DeleteProductsById(selectedIds);
+                return RedirectToAction("Index", "Producten");
+            }
+            BulkEdit bulkEdit = new(selectedIds);
+            ProductenViewModel productenViewModel = new(productService.GetAllProducts().ToList(), null, bulkEdit);
+            return PartialView("_BulkEditProducten", productenViewModel);
+        }
 
-            return RedirectToAction(nameof(Index));
+        [HttpPost]
+        public IActionResult BulkEditSave(BulkEdit? bulkEdit)
+        {
+            if (bulkEdit == null) return NotFound();
+            _productService.EditProducts(bulkEdit);
+            return RedirectToAction("Index", "Producten");
         }
 
         [HttpGet]
@@ -82,13 +92,21 @@ namespace BackOffice.Controllers
         // renders the list view on load
         public IActionResult Index()
         {
-            Producten = _productService.GetAllProducts().ToList();
-            return View();
+            ProductenViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
+
+            return View(vm);
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            ProductenViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
+            return View(vm);
+        }
+
+        public IActionResult Producten()
+        {
+            ProductenViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
+            return View(vm);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

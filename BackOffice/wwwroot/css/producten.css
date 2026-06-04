@@ -1,0 +1,297 @@
+﻿body {
+}
+
+.product {
+    display: grid;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    align-content: center;
+    justify-items: center;
+    grid-template-columns: 30px repeat(8, 1fr);
+}
+
+.edit-product {
+    height: fit-content;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.remove-product {
+    height: fit-content;
+}
+
+
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 40%;
+    margin: 10%;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.left-side-container {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 10px;
+    justify-content: center;
+    width: 50%;
+}
+
+.right-side-container {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 10px;
+    width: 20%;
+    justify-content: center;
+    padding: 5px;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 45%;
+    gap: 600%;
+    align-items: center;
+    justify-content: center;
+    bottom: 365px;
+}
+
+.availabilityContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
+/* bulk */
+
+
+.BulkEditContainer {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    max-width: 420px;
+}
+
+.BulkEdit-valuesConatiner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.25rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.BulkEdit-valuesConatiner label {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Wrap each input + symbol in a div.input-wrapper in your HTML */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.BulkEdit-valuesConatiner input[type="number"] {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.BulkEdit-valuesConatiner input[type="number"]:focus {
+    outline: none;
+    border-color: #999;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+}
+
+.currency, .percentage {
+    font-size: 13px;
+    color: #888;
+    flex-shrink: 0;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.editForm-Btn {
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #ddd;
+}
+
+.edit-cancel-btn {
+    background: #f5f5f5;
+    color: #555;
+}
+
+.edit-cancel-btn:hover {
+    background: #ebebeb;
+}
+
+.edit-save-btn {
+    background: #111;
+    color: #fff;
+    border-color: transparent;
+}
+
+.edit-save-btn:hover {
+    opacity: 0.85;
+}
+
+/* Edit product  */
+
+
+form {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* ---- shared column styles ---- */
+.left-side-container,
+.right-side-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.left-side-container label,
+.right-side-container label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+    margin-top: 0.4rem;
+}
+
+.left-side-container label:first-child,
+.right-side-container label:first-child {
+    margin-top: 0;
+}
+
+/* ---- inputs ---- */
+.left-side-container input[type="text"],
+.left-side-container input[type="number"],
+.right-side-container input[type="number"] {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+    color: #111;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.left-side-container input:focus,
+.right-side-container input:focus {
+    outline: none;
+    border-color: #999;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ---- availability side-by-side ---- */
+.availabilityContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 0.75rem;
+}
+
+/* ---- price input + symbol ---- */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-wrapper input {
+    flex: 1;
+    min-width: 0;
+}
+
+.currency,
+.percentage {
+    font-size: 13px;
+    color: #888;
+    flex-shrink: 0;
+}
+
+/* ---- buttons ---- */
+.buttonContainer {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.editForm-Btn {
+    padding: 7px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    transition: background 0.15s, opacity 0.15s;
+}
+
+.edit-cancel-btn {
+    background: #f5f5f5;
+    color: #555;
+}
+
+.edit-cancel-btn:hover {
+    background: #ebebeb;
+}
+
+.edit-save-btn {
+    background: #111;
+    color: #fff;
+    border-color: transparent;
+}
+
+.edit-save-btn:hover {
+    opacity: 0.82;
+}
+
+/* product */
+f

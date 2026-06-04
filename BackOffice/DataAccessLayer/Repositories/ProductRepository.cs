@@ -57,20 +57,40 @@ namespace DataAccessLayer.Repositories
         {
             return _context.Products.Include(p => p.Parts).FirstOrDefault(p => p.Id == id);
         }
+        public List<Product> GetProductsByIds(List<int> productIds)
+        {
+            List<Product> products = [];
+            foreach (var id in productIds)
+            {
+                products.Add(GetProductById(id));
+            }
+            return products;
+        }
 
         public void UpdateProduct(Product product)
         {
             _context.Products.Update(product);
             _context.SaveChanges();
         }
-        public void UpdateProductsById(List<int> productIds)
+        public void UpdateProducts(List<Product> products)
         {
-            var products = _context.Products.Where(p => productIds.Contains(p.Id)).ToList();
             foreach (var product in products)
             {
                 _context.Products.Update(product);
             }
             _context.SaveChanges();
+        }
+        public void EditProducts(BulkEdit bulkEdit)
+        {
+            List<int> ints = bulkEdit.ProductIds;
+            List<Product> producten = this.GetProductsByIds(ints);
+            foreach (var item in producten)
+            {
+                item.KostPrice = bulkEdit.KostPrice;
+                item.SalePercentage = bulkEdit.SalePercentage;
+            }
+
+            this.UpdateProducts(producten);
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BackOffice.DataAccessLayer.Models
 {
     public class Product
-    {        
+    {
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -29,6 +29,8 @@ namespace BackOffice.DataAccessLayer.Models
         public string Type {  get; set; }
 
         public decimal SalePercentage { get; set; }
+
+        public string Status { get; set; }
 
         public ICollection<Order> Orders { get; } = new List<Order>();
 
