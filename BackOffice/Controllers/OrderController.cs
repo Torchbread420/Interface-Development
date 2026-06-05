@@ -15,11 +15,22 @@ namespace BackOffice.Controllers
         }
         public IActionResult Index()
         {
-            var orderviewmodel = new OrderViewModel
+            var orders = _orderRepository.GetAllOrders().ToList();
+
+            var viewModel = new OrderViewModel
             {
-                Orders = _orderRepository.GetAllOrders().ToList()
+                Orders = orders.Select(o => new OrderWithTotal
+                {
+                    Order = o,
+                    TotalPrice = o.Products.Sum(p => p.Price)
+                }).ToList()
             };
-            return View(orderviewmodel);
+
+            return View(viewModel);
+        }
+        public IActionResult OrderDetails()
+        {
+            return View();
         }
     }
 }

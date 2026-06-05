@@ -30,15 +30,6 @@ namespace DataAccessLayer
             };
             context.Users.AddRange(users);
 
-            var orders = new Order[]
-            {
-                new Order { User = users[0], OrderDate = DateTime.Parse("2021-01-01")},
-                new Order { User = users[0], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { User = users[1], OrderDate = DateTime.Parse("2021-02-01")},
-                new Order { User = users[2], OrderDate = DateTime.Parse("2021-03-01")}
-            };  
-            context.Orders.AddRange(orders);
-
             var products = new Product[]
             {
                 new Product { Name = "Nebuchadnezzar", Description = "Het schip waarop Neo voor het eerst de echte wereld leert kennen", Price = 10000.00m },
@@ -46,6 +37,14 @@ namespace DataAccessLayer
                 new Product { Name = "EMP (Electro-Magnetic Pulse) Device", Description = "Wapentuig op de schepen van Zion", Price = 129.99m }
             };
             context.Products.AddRange(products);
+
+            var orders = new Order[]
+{
+                new Order { Name = "Moer V6 3/4 Bestelling", OrderTime = TimeOnly.Parse("09:15"), OrderDate = DateOnly.Parse("2025-05-12"), OrderStatus = "Voltooid", User = users[0], Products = new List<Product> { products[0], products[0], products[1] } },
+                new Order { Name = "Tandwiel Set Bestelling", OrderTime = TimeOnly.Parse("11:30"), OrderDate = DateOnly.Parse("2025-05-13"), OrderStatus = "In behandeling", User = users[1], Products = new List<Product> { products[1], products[2], products[0] } },
+                new Order { Name = "Veerring Assortiment", OrderTime = TimeOnly.Parse("14:45"), OrderDate = DateOnly.Parse("2025-05-14"), OrderStatus = "Verzonden", User = users[0], Products = new List<Product> { products[2], products[2], products[2] } }
+};
+            context.Orders.AddRange(orders);
 
             var parts = new Part[]
             {
