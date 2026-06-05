@@ -49,17 +49,17 @@
                 <div></div>
             </div>
             @foreach (OrderWithTotal order in Model.Orders)
-                {
-                    <a asp-action="OrderDetails" asp-route-id="@order.Order.Id" class="table-row">
-                        <div>@order.Order.Name</div>
-                        <div>@order.Order.User.Name</div>
-                        <div>@order.Order.OrderDate</div>
-                        <div>@order.Order.OrderTime</div>
-                        <div>@order.Order.OrderStatus</div>
-                        <div>€@order.TotalPrice</div>
-                        <div class="arrow">›</div>
-                    </a>
-                }
+            {
+                <a asp-controller="Order" asp-action="OrderDetails" asp-route-id="@order.Order.Id" class="table-row">
+                    <div>@order.Order.Name</div>
+                    <div>@order.Order.User.Name</div>
+                    <div>@order.Order.OrderDate</div>
+                    <div>@order.Order.OrderTime</div>
+                    <div>@order.Order.OrderStatus</div>
+                    <div>€@order.TotalPrice</div>
+                    <div class="arrow">›</div>
+                </a>
+            }
         </div>
         
     </div>

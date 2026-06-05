@@ -40,20 +40,11 @@ namespace DataAccessLayer
 
             var orders = new Order[]
 {
-                new Order { Name = "Moer V6 3/4 Bestelling", OrderTime = TimeOnly.Parse("09:15"), OrderDate = DateOnly.Parse("2025-05-12"), OrderStatus = "Voltooid", User = users[0], Products = new List<Product> { products[0], products[0], products[1] } },
-                new Order { Name = "Tandwiel Set Bestelling", OrderTime = TimeOnly.Parse("11:30"), OrderDate = DateOnly.Parse("2025-05-13"), OrderStatus = "In behandeling", User = users[1], Products = new List<Product> { products[1], products[2], products[0] } },
-                new Order { Name = "Veerring Assortiment", OrderTime = TimeOnly.Parse("14:45"), OrderDate = DateOnly.Parse("2025-05-14"), OrderStatus = "Verzonden", User = users[0], Products = new List<Product> { products[2], products[2], products[2] } }
+                new Order { Name = "Moer V6 3/4 Bestelling", OrderTime = TimeOnly.Parse("09:15"), OrderDate = DateOnly.Parse("2025-05-12"), OrderStatus = "Voltooid", User = users[0], OrderProducts = new List<OrderProduct> { new OrderProduct { Product = products[0], Quantity = 2 }, new OrderProduct { Product = products[1], Quantity = 1 } } },
+                new Order { Name = "Tandwiel Set Bestelling", OrderTime = TimeOnly.Parse("11:30"), OrderDate = DateOnly.Parse("2025-05-13"), OrderStatus = "In behandeling", User = users[1], OrderProducts = new List<OrderProduct> { new OrderProduct { Product = products[1], Quantity = 1 }, new OrderProduct { Product = products[2], Quantity = 1 }, new OrderProduct { Product = products[0], Quantity = 1 } } },
+                new Order { Name = "Veerring Assortiment", OrderTime = TimeOnly.Parse("14:45"), OrderDate = DateOnly.Parse("2025-05-14"), OrderStatus = "Verzonden", User = users[0], OrderProducts = new List<OrderProduct> { new OrderProduct { Product = products[2], Quantity = 3 } } }
 };
             context.Orders.AddRange(orders);
-
-            var parts = new Part[]
-            {
-                new Part { Name = "Tandwiel", Description = "Overdracht van rotatie in bijvoorbeeld de motor of luikmechanismen"},
-                new Part { Name = "M5 Boutje", Description = "Bevestiging van panelen, buizen of interne modules"},
-                new Part { Name = "Hydraulische cilinder", Description = "Openen/sluiten van zware luchtsluizen of bewegende onderdelen"},
-                new Part { Name = "Koelvloeistofpomp", Description = "Koeling van de motor of elektronische systemen."}
-            };
-            context.Parts.AddRange(parts);
 
             context.SaveChanges();
 

@@ -22,15 +22,26 @@ namespace BackOffice.Controllers
                 Orders = orders.Select(o => new OrderWithTotal
                 {
                     Order = o,
-                    TotalPrice = o.Products.Sum(p => p.Price)
+                    TotalPrice = o.OrderProducts.Sum(op => op.Quantity * op.Product.Price)
                 }).ToList()
             };
 
             return View(viewModel);
         }
-        public IActionResult OrderDetails()
+        public IActionResult OrderDetails(int id)
         {
-            return View();
+            var order = _orderRepository.GetOrderById(id);
+
+            if (order == null)
+                return NotFound();
+
+            var viewModel = new OrderDetailsViewModel
+            {
+                Order = order,
+                TotalPrice = order.OrderProducts?.Sum(op => op.Quantity * op.Product.Price) ?? 0
+            };
+
+            return View(viewModel);
         }
     }
 }

@@ -1,5 +1,108 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model OrderDetailsViewModel
 @{
+    ViewData["Title"] = "OrderDetails";
 }
+
+<link rel="stylesheet" href="~/css/orderdetails.css" asp-append-version="true" />
+
+<div class="container">
+
+    <div class="breadcrumb">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span>›</span>
+        <a asp-controller="Order" asp-action="Index">Orders</a>
+        <span>›</span>
+        <span>Order #@Model.Order?.Id</span>
+    </div>
+
+    <header class="header-row">
+        <h1>Order #@Model.Order?.Id</h1>
+        <div class="status-badge">
+            <span class="icon-text-badge"></span>
+            @Model.Order?.OrderStatus
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+
+        <div class="main-content">
+
+            <section class="card order-info-card">
+                <div class="info-block">
+                    <label>Orderdatum</label>
+                    <p>@Model.Order?.OrderDate om @Model.Order?.OrderTime</p>
+                </div>
+                <div class="info-block text-right">
+                    <label>Referentie</label>
+                    <p>ORD-@Model.Order?.Id</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-title">
+                    <span class="card-title-icon">&#128230;</span>
+                    Orderregels
+                </div>
+
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class="text-right">Aantal</th>
+                            <th class="text-right">Stukprijs</th>
+                            <th class="text-right">Totaal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (OrderProduct orderProduct in Model.Order.OrderProducts)
+                        {
+                            <tr>
+                                <td>@orderProduct.Product.Name</td>
+                                <td class="text-right">@orderProduct.Quantity</td>
+                                <td class="text-right">&euro;@orderProduct.Product.Price</td>
+                                <td class="text-right">&euro;@(orderProduct.Quantity * orderProduct.Product.Price)</td>
+                            </tr>
+                        }
+                        <tr class="summary-row total">
+                            <td colspan="3"></td>
+                            <td class="text-right">Totaal</td>
+                            <td class="text-right">&euro;@Model.TotalPrice</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+
+        <aside class="sidebar-content">
+
+            <section class="card contact-card">
+                <div class="card-title">Klant</div>
+                <div class="contact-item user-profile">
+                    <span class="profile-name">@Model.Order?.User.Name</span>
+                </div>
+                <div class="contact-item">
+                    <span class="unicode-icon">&#9993;</span>
+                    <span>@Model.Order?.User.Email</span>
+                </div>
+                <div class="contact-item">
+                    <span class="unicode-icon">&#128222;</span>
+                    <span>+31 @Model.Order?.User.PhoneNumber</span>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-title">Bezorgadres</div>
+                <div class="address-grid">
+                    <span class="unicode-icon marker-icon">&#128205;</span>
+                    <div class="address-text">
+                        <strong class="profile-name block-span">@Model.Order?.User.Name</strong>
+                        @Model.Order?.User.Address<br>
+                    </div>
+                </div>
+            </section>
+
+        </aside>
+
+    </main>
+</div>

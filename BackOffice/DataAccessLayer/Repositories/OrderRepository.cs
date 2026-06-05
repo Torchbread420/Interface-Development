@@ -32,12 +32,12 @@ namespace DataAccessLayer.Repositories
 
         public IEnumerable<Order> GetAllOrders()
         {
-            return _context.Orders.Include(o => o.User).Include(o => o.Products);
+            return _context.Orders.Include(o => o.User).Include(o => o.OrderProducts).ThenInclude(op => op.Product);
         }
 
         public Order? GetOrderById(int id)
         {
-            return _context.Orders.Include(o => o.User).Include(o => o.Products).FirstOrDefault(o => o.Id == id);
+            return _context.Orders.Include(o => o.User).Include(o => o.OrderProducts).ThenInclude(op => op.Product).FirstOrDefault(o => o.Id == id);
         }
 
         public void UpdateOrder(Order order)

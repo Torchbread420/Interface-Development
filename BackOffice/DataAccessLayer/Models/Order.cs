@@ -23,7 +23,7 @@ namespace BackOffice.Models
 
         public required User User { get; set; }
 
-        public required List<Product> Products { get; set; }
+        public required List<OrderProduct> OrderProducts { get; set; }
 
     }
 }
