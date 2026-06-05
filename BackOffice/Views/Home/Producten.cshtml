@@ -75,6 +75,40 @@
                 <div class="text-muted ms-2">@Model.TotalCount artikelen</div>
             </div>
 
+            <!-- start import -->
+            <form asp-controller="Producten" asp-action="BulkAction" method="post" id="bulkForm">
+                <div class="productenContainer">
+
+                    @foreach (var product in Model.Items)
+                    {
+                        <div class="product">
+                            <input type="checkbox" class="bulk-checkbox" name="selectedIds" value="@product.Id" />
+
+                            <div class="id-product">@product.Id</div>
+                            <div class="title-product">@product.Name</div>
+                            <div class="type-product">@product.</div>
+                            <div class="availability-product">@product.Availability</div>
+                            <div class="kostPrijs-product">@product.KostPrice</div>
+                            <div class="beschikbaarheid-product">@product.Price</div>
+                            <div class="status-product @product.Status">
+                                <span>@product.Status</span>
+                            </div>
+
+                            <a asp-controller="Producten" asp-action="Edit" asp-route-id="@product.Id" class="edit-product">Edit</a>
+                            <button type="button" class="remove-product" hx-post="/Producten/Remove/@product.Id" onclick="submitRemove(@product.Id)">Remove</button>
+                        </div>
+                    }
+
+                    <!-- Hidden field to carry which button was clicked -->
+                    <input type="hidden" name="action" id="bulkActionType" value="" />
+
+                    <button type="button" class="bulk-action" onclick="submitBulk('edit')">Edit Selected</button>
+                    <button type="button" class="bulk-action" onclick="submitBulk('delete')">Delete Selected</button>
+
+                </div>
+            </form>
+            <!-- end import -->
+
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
@@ -99,8 +133,8 @@
                             <td class="text-muted">@p.SKU</td>
                             <td>@p.Category</td>
                             <td>@p.Location</td>
-                            <td class="text-end">@String.Format("{0:N0}", p.Stock)</td>
-                            <td class="text-end">@String.Format("{0:N0}", p.Min)</td>
+                            <td class="text-end">@String.Format("{0:N0}", p.Availability)</td>
+                            <td class="text-end">@String.Format("{0:N0}", p.MinimumAvailablility)</td>
                             <td class="text-end">€@p.Price.ToString("0.00")</td>
                             <td class="text-center">
                                 <span class="badge status-badge @badgeClass"><i class="bi @iconClass me-1"></i> @p.Status</span>

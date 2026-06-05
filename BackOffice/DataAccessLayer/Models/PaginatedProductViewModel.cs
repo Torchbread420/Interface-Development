@@ -16,5 +16,16 @@ namespace BackOffice.DataAccessLayer.Models
         public int OnStockCount { get; set; }
         public int LowCount { get; set; }
         public int OutCount { get; set; }
+        public Product? ProductEditForm { get; set; }
+        public BulkEdit? BulkEdit { get; set; }
+
+        public PaginatedProductViewModel() { }
+
+        public PaginatedProductViewModel(List<Product> items, Product? productEditForm = null, BulkEdit? bulkEdit = null)
+        {
+            Items = items;
+            ProductEditForm = productEditForm;
+            BulkEdit = bulkEdit;
+        }
     }
 }
