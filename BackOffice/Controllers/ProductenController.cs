@@ -108,6 +108,11 @@ namespace BackOffice.Controllers
             PaginatedProductViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
             return View(vm);
         }
+        public IActionResult Categories()
+        {
+            var products = _productService.GetAllProducts().ToList();
+            return View(products);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
