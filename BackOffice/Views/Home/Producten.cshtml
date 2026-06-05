@@ -5,9 +5,9 @@
 }
 <head>
     <script>
-        // ---- producten bulk ----
+        /* ---- producten bulk ---- */
 
-        // Submit the bulk form with the chosen action
+        /* Submit the bulk form with the chosen action */
         function submitBulk(action) {
             const checked = document.querySelectorAll('.bulk-checkbox:checked');
             if (checked.length === 0) {
@@ -18,7 +18,7 @@
             document.getElementById('bulkForm').submit();
         }
 
-        // Individual remove — posts a tiny separate form dynamically
+        /* Individual remove — posts a tiny separate form dynamically */
         function submitRemove(id) {
             if (!confirm('Remove this product?')) return;
             const f = document.createElement('form');
@@ -32,6 +32,18 @@
             document.body.appendChild(f);
             f.submit();
         }
+        /* Zoekfunctie */
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("searchInput").addEventListener("keyup", function () {
+                let filter = this.value.toLowerCase();
+                let rows = document.querySelectorAll("tr");
+
+                rows.forEach(row => {
+                    let text = row.innerText.toLowerCase();
+                    row.style.display = text.includes(filter) ? "" : "none";
+                });
+            });
+        });
     </script>
 </head>
 <div class="container-fluid px-4 py-4">
@@ -95,7 +107,7 @@
                 <form class="search-form flex-grow-1 me-3" method="get" asp-action="Product">
                     <div class="input-group search-group">
                         <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
-                        <input name="q" value="@(ViewContext.HttpContext.Request.Query["q"])" type="text" class="form-control search-input" placeholder="Zoeken op naam, categorie of SKU..." />
+                        <input type="text" id="searchInput" placeholder="Zoeken op naam, categorie of SKU..." />
                     </div>
                 </form>
                 <div class="text-muted ms-2">@Model.TotalCount artikelen</div>
