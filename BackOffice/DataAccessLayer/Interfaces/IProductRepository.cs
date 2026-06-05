@@ -12,11 +12,20 @@ namespace DataAccessLayer.Interfaces
         public IEnumerable<Product> GetAllProducts();
 
         public Product? GetProductById(int id);
+        public List<Product>? GetProductsByIds(List<int> ids);
 
         public void AddProduct(Product product);
 
         public void UpdateProduct(Product product);
 
         public void DeleteProduct(Product product);
+
+        public void DeleteProductById(int productId);
+
+        public void DeleteProductsById(List<int> productIds);
+
+        public void UpdateProducts(List<Product> products);
+
+        public void EditProducts(BulkEdit bulkEdit);
     }
 }
