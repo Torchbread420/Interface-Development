@@ -8,7 +8,6 @@
 <body>
 
     <div class="page">
-
         <div class="breadcrumb">
             <a asp-controller="Home" asp-action="Index">Home</a>
             <span>›</span>
@@ -18,27 +17,24 @@
         <h1>Orders</h1>
 
         <div class="toolbar">
-
             <div class="search-box">
-                <input type="text" placeholder="Zoeken...">
+                <input type="text" id="searchInput" placeholder="Zoeken...">
             </div>
 
-            <select>
-                <option>Alle</option>
-                <option>Voltooid</option>
-                <option>In behandeling</option>
-                <option>Verzonden</option>
-                <option>Geannuleerd</option>
+            <select id="statusFilter">
+                <option value="all">Alle</option>
+                <option value="Voltooid">Voltooid</option>
+                <option value="In behandeling">In behandeling</option>
+                <option value="Verzonden">Verzonden</option>
+                <option value="Geannuleerd">Geannuleerd</option>
             </select>
 
             <div class="results">
-                3 resultaten
+                <span id="resultsCount">@Model.Orders.Count()</span> resultaten
             </div>
-
         </div>
 
-        <div class="orders-table">
-
+        <div class="orders-table" id="ordersTable">
             <div class="table-header table-row">
                 <div>NAAM</div>
                 <div>KLANT</div>
@@ -48,10 +44,11 @@
                 <div>BEDRAG</div>
                 <div></div>
             </div>
+            
             @foreach (OrderWithTotal order in Model.Orders)
             {
-                <a asp-controller="Order" asp-action="OrderDetails" asp-route-id="@order.Order.Id" class="table-row">
-                    <div>@order.Order.Name</div>
+                <a asp-controller="Order" asp-action="OrderDetails" asp-route-id="@order.Order.Id" class="table-row order-data-row">
+                    <div class="order-name">@order.Order.Name</div>
                     <div>@order.Order.User.Name</div>
                     <div>@order.Order.OrderDate</div>
                     <div>@order.Order.OrderTime</div>
@@ -61,8 +58,7 @@
                 </a>
             }
         </div>
-        
     </div>
 
 </body>
-</html>
+<script src="~/js/orderfilter.js"></script>
