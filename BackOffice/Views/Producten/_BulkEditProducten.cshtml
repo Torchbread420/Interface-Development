@@ -1,0 +1,33 @@
+﻿
+@model BackOffice.DataAccessLayer.Models.ProductenViewModel;
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/producten.css" asp-append-version="true" />
+</head>
+
+    
+<form asp-controller="Producten" method="post" class="BulkEditContainer">
+
+    <div class="BulkEdit-valuesConatiner">
+        @foreach (var id in Model.BulkEdit.ProductIds)
+        {
+            <input type="hidden" name="BulkEdit.ProductIds" value="@id" />
+        }
+        <!-- abs price -->
+        <label for="KostPrice">Kost Price:</label>
+        <div class="input-wrapper">
+            <input type="number" id="KostPrice" name="BulkEdit.KostPrice" value="@Model?.BulkEdit?.KostPrice" /><span class="currency">€</span>
+            </div>
+        <!-- sale price -->
+        <label for="SalePercentage">Sale Price:</label>
+        <div class="input-wrapper">
+        <input type="number" id="SalePercentage" name="BulkEdit.SalePercentage" value="@Model?.BulkEdit?.SalePercentage" /><span class="percentage">%</span>
+        </div>
+    </div>
+
+    <div class="buttonContainer">
+        <a asp-controller="Home" asp-action="Producten" class="edit-cancel-btn editForm-Btn">Cancel</a>
+        <button type="submit" asp-action="BulkEditSave" class="edit-save-btn editForm-Btn">Save</button>
+    </div>
+</form>
