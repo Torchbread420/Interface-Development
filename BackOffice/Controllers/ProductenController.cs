@@ -20,13 +20,13 @@ namespace BackOffice.Controllers
         {
             var product = _productService.GetProductById(id);
             if (product == null) return NotFound();
-            ProductenViewModel productenViewModel = new(productService.GetAllProducts().ToList(), product, null);
+            PaginatedProductViewModel productenViewModel = new(productService.GetAllProducts().ToList(), product, null);
             return PartialView("_EditProduct", productenViewModel);
         }
 
         // save edit
         [HttpPost]
-        public IActionResult EditProduct(ProductenViewModel viewModel)
+        public IActionResult EditProduct(PaginatedProductViewModel viewModel)
         {
             Product? product = viewModel.ProductEditForm;
             if (product == null) return NotFound();
@@ -55,7 +55,7 @@ namespace BackOffice.Controllers
                 return RedirectToAction("Home", "Producten");
             }
             BulkEdit bulkEdit = new(selectedIds);
-            ProductenViewModel productenViewModel = new(productService.GetAllProducts().ToList(), null, bulkEdit);
+            PaginatedProductViewModel productenViewModel = new(productService.GetAllProducts().ToList(), null, bulkEdit);
             return PartialView("_BulkEditProducten", productenViewModel);
         }
 
@@ -92,20 +92,20 @@ namespace BackOffice.Controllers
         // renders the list view on load
         public IActionResult Index()
         {
-            ProductenViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
+            PaginatedProductViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
 
             return View(vm);
         }
 
         public IActionResult Privacy()
         {
-            ProductenViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
+            PaginatedProductViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
             return View(vm);
         }
 
         public IActionResult Producten()
         {
-            ProductenViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
+            PaginatedProductViewModel vm = new(_productService.GetAllProducts().ToList(), null, null);
             return View(vm);
         }
 

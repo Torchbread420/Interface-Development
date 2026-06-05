@@ -3,22 +3,48 @@
     ViewData["Title"] = "Producten";
     Layout = "_Layout";
 }
+<head>
+    <script>
+        // ---- producten bulk ----
 
+        // Submit the bulk form with the chosen action
+        function submitBulk(action) {
+            const checked = document.querySelectorAll('.bulk-checkbox:checked');
+            if (checked.length === 0) {
+                alert('Select at least one product.');
+                return;
+            }
+            document.getElementById('bulkActionType').value = action;
+            document.getElementById('bulkForm').submit();
+        }
+
+        // Individual remove — posts a tiny separate form dynamically
+        function submitRemove(id) {
+            if (!confirm('Remove this product?')) return;
+            const f = document.createElement('form');
+            f.method = 'post';
+            f.action = '/Producten/Remove';
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'id';
+            input.value = id;
+            f.appendChild(input);
+            document.body.appendChild(f);
+            f.submit();
+        }
+    </script>
+</head>
 <div class="container-fluid px-4 py-4">
     <div class="d-flex align-items-center mb-3">
         <h2 class="me-3">Producten</h2>
     </div>
 
-    <!-- Sub-navbar: Voorraad overzicht | Voorraadbeheer | Categorieën -->
+    <!-- Sub-navbar: Voorraad overzicht | Categorieën -->
     <div class="product-subnav mb-4">
         <nav class="nav align-items-center">
             <a asp-controller="Home" asp-action="Product" class="nav-link subnav-link active">
                 <i class="bi bi-layout-text-window-reverse me-2"></i>
                 Voorraad overzicht
-            </a>
-            <a asp-controller="Home" asp-action="VoorraadBeheer" class="nav-link subnav-link">
-                <i class="bi bi-tools me-2"></i>
-                Voorraad beheer
             </a>
             <a asp-controller="Home" asp-action="Categorieen" class="nav-link subnav-link">
                 <i class="bi bi-tags me-2"></i>
@@ -75,44 +101,12 @@
                 <div class="text-muted ms-2">@Model.TotalCount artikelen</div>
             </div>
 
-            <!-- start import -->
-            <form asp-controller="Producten" asp-action="BulkAction" method="post" id="bulkForm">
-                <div class="productenContainer">
-
-                    @foreach (var product in Model.Items)
-                    {
-                        <div class="product">
-                            <input type="checkbox" class="bulk-checkbox" name="selectedIds" value="@product.Id" />
-
-                            <div class="id-product">@product.Id</div>
-                            <div class="title-product">@product.Name</div>
-                            <div class="type-product">@product.</div>
-                            <div class="availability-product">@product.Availability</div>
-                            <div class="kostPrijs-product">@product.KostPrice</div>
-                            <div class="beschikbaarheid-product">@product.Price</div>
-                            <div class="status-product @product.Status">
-                                <span>@product.Status</span>
-                            </div>
-
-                            <a asp-controller="Producten" asp-action="Edit" asp-route-id="@product.Id" class="edit-product">Edit</a>
-                            <button type="button" class="remove-product" hx-post="/Producten/Remove/@product.Id" onclick="submitRemove(@product.Id)">Remove</button>
-                        </div>
-                    }
-
-                    <!-- Hidden field to carry which button was clicked -->
-                    <input type="hidden" name="action" id="bulkActionType" value="" />
-
-                    <button type="button" class="bulk-action" onclick="submitBulk('edit')">Edit Selected</button>
-                    <button type="button" class="bulk-action" onclick="submitBulk('delete')">Delete Selected</button>
-
-                </div>
-            </form>
-            <!-- end import -->
-
-            <div class="table-responsive">
+            <form asp-controller="Producten" asp-action="BulkAction" method="post" id="bulkForm" class"table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
+                            <th><!--Empty--></th>
+                            <th>ID</th>
                             <th>Naam</th>
                             <th>SKU</th>
                             <th>Categorie</th>
@@ -121,28 +115,50 @@
                             <th class="text-end">Min.</th>
                             <th class="text-end">Prijs/st.</th>
                             <th class="text-center">Status</th>
+                            <th class="text-end">Edit</th>
+                            <th class="text-end">Verwijder</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var p in Model.Items)
-                        {
-                            var badgeClass = p.Status == "Op voorraad" ? "status-success" : p.Status == "Laag voorraad" ? "status-warning" : "status-danger";
-                            var iconClass = p.Status == "Op voorraad" ? "bi-check-circle" : p.Status == "Laag voorraad" ? "bi-exclamation-triangle" : "bi-x-circle";
-                        <tr>
-                            <td>@p.Name</td>
-                            <td class="text-muted">@p.SKU</td>
-                            <td>@p.Category</td>
-                            <td>@p.Location</td>
-                            <td class="text-end">@String.Format("{0:N0}", p.Availability)</td>
-                            <td class="text-end">@String.Format("{0:N0}", p.MinimumAvailablility)</td>
-                            <td class="text-end">€@p.Price.ToString("0.00")</td>
+                    @foreach (var product in Model.Items)
+                    {
+                            string badgeClass = product.Status == "Op voorraad" ? "status-success" : product.Status == "Laag voorraad" ? "status-warning" : "status-danger";
+                            string iconClass = product.Status == "Op voorraad" ? "bi-check-circle" : product.Status == "Laag voorraad" ? "bi-exclamation-triangle" : "bi-x-circle";
+
+                        <tr class="product">
+                            <td>    
+                                <input type="checkbox" class="bulk-checkbox" name="selectedIds" value="@product.Id" />
+                            </td>
+                            <td>@product.Id</td>
+                            <td>@product.Name</td>
+                                <td class="text-muted">@product.SKU</td>
+                            <td>@product.Category</td>
+                            <td>@product.Location</td>
+                                <td class="text-end">@product.Availability</td>
+                            <td class="text-end">@product.MinimumAvailablility</td>
+                                <td class="text-end">@product.Price</td>
                             <td class="text-center">
-                                <span class="badge status-badge @badgeClass"><i class="bi @iconClass me-1"></i> @p.Status</span>
+                                <span class="badge status-badge @badgeClass"><i class="bi @iconClass me-1"></i> @product.Status</span>
+                            </td>
+                            <td class="text-end">
+                                <a asp-controller="Producten" asp-action="Edit" asp-route-id="@product.Id" class="edit-product">Edit</a>
+                            </td>
+                            <td class="text-end">
+                                <button type="button" class="remove-product" hx-post="/Producten/Remove/@product.Id" onclick="submitRemove(@product.Id)">Remove</button>
                             </td>
                         </tr>
-                        }
+                    }
                     </tbody>
+
+
                 </table>
+                <!-- Hidden field to carry which button was clicked -->
+                <input type="hidden" name="action" id="bulkActionType" value="" />
+
+                <button type="button" class="bulk-action" onclick="submitBulk('edit')">Edit Selected</button>
+                <button type="button" class="bulk-action" onclick="submitBulk('delete')">Delete Selected</button>
+            </form>
+            
             </div>
 
             <div class="d-flex justify-content-end mt-3">
