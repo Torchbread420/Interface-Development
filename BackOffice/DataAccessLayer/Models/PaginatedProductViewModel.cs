@@ -1,5 +1,7 @@
 ﻿
 using DataAccessLayer.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 
 namespace BackOffice.DataAccessLayer.Models
@@ -26,6 +28,29 @@ namespace BackOffice.DataAccessLayer.Models
             Items = items;
             ProductEditForm = productEditForm;
             BulkEdit = bulkEdit;
+            SetTotal();
+            SetPage();
+            SetStockAmmount();
+        }
+            
+        private void SetTotal()
+        {
+            TotalCount = Items.Count;
+        }
+        private void SetPage()
+        {
+            PageSize = 10;
+            Page = 1;
+        }
+        private void SetStockAmmount()
+        {
+            var onStockCount = Items.Count(x => x.Availability > 0 && x.Availability > x.MinimumAvailablility);
+            var lowCount = Items.Count(x => x.Availability > 0 && x.Availability < x.MinimumAvailablility);
+            var outCount = Items.Count(x => x.Availability <= 0);
+
+            OnStockCount = onStockCount;
+            LowCount = lowCount;
+            OutCount = outCount;
         }
     }
 }
