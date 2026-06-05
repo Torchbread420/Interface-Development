@@ -107,13 +107,13 @@
                 <form class="search-form flex-grow-1 me-3" method="get" asp-action="Product">
                     <div class="input-group search-group">
                         <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
-                        <input type="text" id="searchInput" placeholder="Zoeken op naam, categorie of SKU..." />
+                        <input type="text" id="searchInput" class="form-control search-input" placeholder="Zoeken op naam, categorie of SKU..." />
                     </div>
                 </form>
                 <div class="text-muted ms-2">@Model.TotalCount artikelen</div>
             </div>
 
-            <form asp-controller="Producten" asp-action="BulkAction" method="post" id="bulkForm" class"table-responsive">
+            <form asp-controller="Producten" asp-action="BulkAction" method="post" id="bulkForm" class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
