@@ -27,9 +27,9 @@ namespace BackOffice.Models
         public string ImagePath { get; set; }
 
         public decimal KostPrice { get; set; }
-
+        [Required]
         public int Availability { get; set; } // renamed Stock > Availability
-
+        [Required]
         public int MinimumAvailablility { get; set; } // renamed Min > MinimumAvailablility
 
 

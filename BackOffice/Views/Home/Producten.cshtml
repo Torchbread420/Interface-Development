@@ -134,8 +134,8 @@
                     <tbody>
                     @foreach (var product in Model.Items)
                     {
-                            string badgeClass = product.Status == "Op voorraad" ? "status-success" : product.Status == "Laag voorraad" ? "status-warning" : "status-danger";
-                            string iconClass = product.Status == "Op voorraad" ? "bi-check-circle" : product.Status == "Laag voorraad" ? "bi-exclamation-triangle" : "bi-x-circle";
+                            string badgeClass = product.Availability > product.MinimumAvailablility ? "status-success" : product.Availability <= 0 ? "status-danger" : "status-warning";
+                            string iconClass = product.Availability > product.MinimumAvailablility ? "bi-check-circle" : product.Availability <= 0 ? "bi-x-circle" : "bi-exclamation-triangle";
 
                         <tr class="product">
                             <td>    
@@ -150,7 +150,7 @@
                             <td class="text-end">@product.MinimumAvailablility</td>
                                 <td class="text-end">@product.Price</td>
                             <td class="text-center">
-                                <span class="badge status-badge @badgeClass"><i class="bi @iconClass me-1"></i> @product.Status</span>
+                                <span class="badge status-badge @badgeClass"><i class="bi @iconClass me-1"></i>@(product.Availability > product.MinimumAvailablility ? "Op Vooraad" : product.Availability <= 0 ? "Niet op vooraad" : "Laag op vooraad")</span>
                             </td>
                             <td class="text-end">
                                 <a asp-controller="Producten" asp-action="Edit" asp-route-id="@product.Id" class="edit-product">Edit</a>
