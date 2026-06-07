@@ -1,0 +1,153 @@
+@model BackOffice.Models.PersoneelViewModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="page-breadcrumb">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Personeel</li>
+        </ol>
+    </nav>
+    <h1>Personeel</h1>
+</div>
+
+<div class="card tabs-card">
+    <div class="tabs-header">
+        <ul class="tabs-nav">
+            <li class="active" data-tab="tab-personeel">Personeel</li>
+            <li data-tab="tab-uren">Uren</li>
+            <li data-tab="tab-productie">Productie</li>
+            <li data-tab="tab-orders">Orders</li>
+        </ul>
+        @* Button removed from header so it doesn't show on all tabs *@
+    </div>
+
+    <div class="tab-content">
+        <!-- Personeel -->
+        <div id="tab-personeel" class="tab-pane active">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="subheader">@($"{Model.WeekHours.Count()} medewerkers")</div>
+                <a asp-action="CreateEmployee" class="add-employee btn btn-primary">+ Nieuwe medewerker</a>
+            </div>
+
+            <div class="cards-grid">
+                @foreach (var w in Model.WeekHours)
+                {
+                    var user = Model.Users.FirstOrDefault(u => u.Id == w.UserId);
+                    var initials = string.Join("", (w.Name ?? user?.Name ?? "??").Split(' ').Where(s => s.Length>0).Select(s => s[0])).ToUpper();
+                    <div class="person-card">
+                        <div class="person-left">
+                            <div class="avatar">@initials</div>
+                        </div>
+                        <div class="person-right">
+                            <div class="person-name">@w.Name</div>
+                            <div class="person-role">@((user?.UserType) ?? "Medewerker")</div>
+                            <div class="person-contact">
+                                <div class="contact-item"><i class="bi bi-envelope"></i> @((user?.Email) ?? $"{w.Name.ToLower().Replace(" ", ".")}@werkplaats.nl")</div>
+                                <div class="contact-item"><i class="bi bi-telephone"></i> @((user?.PhoneNumber != 0) ? user?.PhoneNumber.ToString() : "+31 6 00000000")</div>
+                                <div class="contact-item"><i class="bi bi-clock"></i> @($"{w.Total} uur/week")</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Uren -->
+        <div id="tab-uren" class="tab-pane">
+            <h3>Uren overzicht — week 22</h3>
+            <div class="table-card">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>MEDEWERKER</th>
+                            <th>MA</th>
+                            <th>DI</th>
+                            <th>WO</th>
+                            <th>DO</th>
+                            <th>VR</th>
+                            <th>TOTAAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var w in Model.WeekHours)
+                        {
+                            <tr>
+                                <td class="name-cell">
+                                    <div class="row-left">
+                                        <div class="avatar small">@string.Join("", (w.Name).Split(' ').Where(s => s.Length>0).Select(s => s[0])).ToUpper()</div>
+                                        <span class="emp-name">@w.Name</span>
+                                    </div>
+                                </td>
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <td>@(w.Days.ElementAtOrDefault(i) > 0 ? w.Days[i] + "u" : "—")</td>
+                                }
+                                <td>@(w.Total)u</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Productie (placeholder) -->
+        <div id="tab-productie" class="tab-pane">
+            <h3>Productie</h3>
+            <p>Placeholder voor productie-tab (kan later gevuld worden).</p>
+        </div>
+
+        <!-- Orders -->
+        <div id="tab-orders" class="tab-pane">
+            <h3>Gekoppelde orders</h3>
+            <div class="table-card">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>NAAM</th>
+                            <th>KLANT</th>
+                            <th>STATUS</th>
+                            <th>BEDRAG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var o in Model.OrdersList)
+                        {
+                            var statusClass = o.Status switch {
+                                "Voltooid" => "badge-voltooid",
+                                "In behandeling" => "badge-inbehandeling",
+                                "Verzonden" => "badge-verzonden",
+                                "Geannuleerd" => "badge-geannuleerd",
+                                _ => ""
+                            };
+                            <tr>
+                                <td>@o.Name</td>
+                                <td>@o.CustomerName</td>
+                                <td class="status-cell"><span class="badge @statusClass">@o.Status</span></td>
+                                <td>@(o.Amount == 0 ? "—" : o.Amount.ToString("C"))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function(){
+            const tabs = document.querySelectorAll('.tabs-nav li');
+            const panes = document.querySelectorAll('.tab-pane');
+            tabs.forEach(t => t.addEventListener('click', function(){
+                tabs.forEach(x => x.classList.remove('active'));
+                panes.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                const id = this.getAttribute('data-tab');
+                document.getElementById(id).classList.add('active');
+            }));
+        })();
+    </script>
+}

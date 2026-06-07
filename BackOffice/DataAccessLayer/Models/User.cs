@@ -30,8 +30,11 @@ namespace DataAccessLayer.Models
 
         public int PhoneNumber { get; set; }
 
-        public string? UserType { get; set; } // Mocht er later een onderscheid gemaakt worden tussen verschillende soorten gebruikers, zoals beheerders, medewerkers, etc.
-        
+        public string? UserType { get; set; }
+
         public ICollection<Order> Orders { get; } = new List<Order>();
+
+        // New: persisted work schedules (Ma - Vr)
+        public ICollection<WorkSchedule> WorkSchedules { get; } = new List<WorkSchedule>();
     }
 }

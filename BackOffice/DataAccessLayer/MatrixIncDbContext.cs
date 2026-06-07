@@ -13,6 +13,7 @@ namespace DataAccessLayer
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Part> Parts { get; set; }
+        public DbSet<WorkSchedule> WorkSchedules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,10 +22,11 @@ namespace DataAccessLayer
                 .WithOne(o => o.User)
                 .HasForeignKey(o => o.UserId).IsRequired();
 
-            //modelBuilder.Entity<Order>()
-            //    .HasOne(o => o.Customer)
-            //    .WithMany(c => c.Orders)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.WorkSchedules)
+                .WithOne(ws => ws.User)
+                .HasForeignKey(ws => ws.UserId)
+                .IsRequired(false);
 
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.Orders)
