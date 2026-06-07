@@ -158,3 +158,204 @@ html {
     background-color: #d4edda;
     border-left: 4px solid #198754;
 }
+
+/* --- additions for Products page layout and controls --- */
+
+/* card that holds the full-width table */
+.products-table-card {
+    background: #ffffff;
+    border: 1px solid #eef1f5;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+}
+
+/* top stat cards: slightly lifted and consistent radius */
+.products-top-cards .card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+/* search group: single cohesive control */
+.search-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #f6f8fb;
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    border: 1px solid #e9eef4;
+}
+
+    .search-group .search-icon {
+        background: transparent;
+        border: none;
+        color: #6b7280;
+        padding: 6px 10px;
+        font-size: 1rem;
+    }
+
+.search-input {
+    border: none;
+    background: transparent;
+    padding: 8px 10px;
+    box-shadow: none;
+    outline: none;
+    color: #111827;
+    width: 100%;
+}
+
+    .search-input::placeholder {
+        color: #9aa4b2;
+    }
+
+/* table visuals to match design: light dividers, airy spacing */
+.table-responsive {
+    width: 100%;
+    margin: 0;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+    .table thead th {
+        background: transparent;
+        border-bottom: none;
+        font-weight: 600;
+        color: #475569;
+        padding-bottom: 8px;
+    }
+
+    .table tbody tr {
+        background: transparent;
+        box-shadow: none;
+    }
+
+        .table tbody tr td {
+            background: #ffffff;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+            padding: 14px 12px;
+        }
+
+/* Status badges with icons */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.status-success {
+    background: #e6fbef;
+    color: #0f9d58;
+}
+
+.status-warning {
+    background: #fff7e6;
+    color: #b76f00;
+}
+
+.status-danger {
+    background: #fff0f0;
+    color: #c53030;
+}
+
+/* small icon color tweaks inside badges */
+.status-badge .bi {
+    font-size: 1.05rem;
+    opacity: 0.95;
+}
+
+/* smaller screens: keep spacing reasonable */
+@media (max-width: 767.98px) {
+    .search-form {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .products-top-cards .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* end additions */
+
+/* product sub-navbar */
+.product-subnav {
+    padding: 8px 0;
+    margin-bottom: 18px;
+    /* two subtle separators above and below the subnav */
+    border-top: 1px solid #eef4fb;
+    border-bottom: 1px solid #eef4fb;
+    background: transparent;
+}
+
+    /* nav row — single unit */
+    .product-subnav .nav {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        padding: 0 2px;
+    }
+
+/* link styles */
+.subnav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    color: #475569;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative; /* for underline pseudo element */
+    transition: color .12s ease;
+}
+
+    /* icon sizing */
+    .subnav-link .bi {
+        font-size: 1rem;
+        color: inherit;
+    }
+
+    /* hover */
+    .subnav-link:hover {
+        color: #0f1724;
+    }
+
+    /* active: only text (and icon) becomes blue; no filled background */
+    .subnav-link.active {
+        color: #256bff;
+    }
+
+        /* active underline: thin blue bar directly under the active link */
+        .subnav-link.active::after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            background: #256bff;
+            left: 0;
+            right: 0;
+            bottom: -10px; /* distance from link baseline to underline */
+            border-radius: 2px;
+        }
+
+/* responsive adjustments */
+@media (max-width: 767.98px) {
+    .product-subnav .nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .subnav-link {
+        padding: 8px 6px;
+        font-size: 0.95rem;
+    }
+}
