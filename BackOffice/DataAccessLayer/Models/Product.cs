@@ -41,8 +41,6 @@ namespace BackOffice.Models
         public List<OrderProduct> OrderProducts { get; set; } = new();
         public ICollection<Order> Orders { get; } = new List<Order>();
 
-        public ICollection<Part> Parts { get; } = new List<Part>();
-
         public Product()
         {
             SalePercentage = CalculateSalePercentage();

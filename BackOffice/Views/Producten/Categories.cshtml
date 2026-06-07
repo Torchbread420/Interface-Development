@@ -1,9 +1,9 @@
-﻿@model IEnumerable<DataAccessLayer.Models.Product>
+﻿@model IEnumerable<BackOffice.Models.Product>
 
 @{
     ViewData["Title"] = "Categorieën";
 
-    var categories = (Model ?? Enumerable.Empty<DataAccessLayer.Models.Product>())
+    var categories = (Model ?? Enumerable.Empty<BackOffice.Models.Product>())
         .GroupBy(p => p.Category ?? "Onbekend")
         .Select(g => new
         {

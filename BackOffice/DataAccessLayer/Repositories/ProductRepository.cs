@@ -1,6 +1,6 @@
 ﻿using BackOffice.DataAccessLayer.Models;
+using BackOffice.Models;
 using DataAccessLayer.Interfaces;
-using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
