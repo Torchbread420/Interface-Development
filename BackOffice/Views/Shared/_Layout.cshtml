@@ -57,11 +57,7 @@
                 </li>
             </ul>
             <!-- Uitloggen onderaan -->
-            <div class="mt-auto">
-                <a href="@(Url.Action("Login","Home"))" class="sidebar-logout @(ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active" : "")">
-                    <i class="bi bi-box-arrow-left"></i>
-                    <span>Uitloggen</span>
-                </a>
+            
             </div>
         </nav>
 
