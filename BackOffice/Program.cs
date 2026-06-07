@@ -11,7 +11,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IPartRepository, PartRepository>();
 builder.Services.AddDbContext<MatrixIncDbContext>(options =>
     options.UseInMemoryDatabase("MatrixIncDatabase"));
 

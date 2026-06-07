@@ -1,0 +1,187 @@
+﻿body {
+}
+
+
+/* ---- page ---- */
+.main {
+    padding: 1rem;
+}
+
+/* ---- table wrapper ---- */
+.productenContainer {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* ---- header row ---- */
+.product-header {
+    display: grid;
+    grid-template-columns: 28px 60px 1fr 100px 90px 80px 60px 80px 130px 70px 70px;
+    align-items: center;
+    gap: 0 12px;
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    background: #fafafa;
+}
+
+/* ---- each product row ---- */
+.product {
+    display: grid;
+    grid-template-columns: 28px 60px 1fr 100px 90px 80px 60px 80px 130px 70px 70px;
+    align-items: center;
+    gap: 0 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    transition: background 0.12s;
+}
+
+.product:last-of-type {
+    border-bottom: none;
+}
+
+.product:hover {
+    background: #fafafa;
+}
+
+/* ---- columns ---- */
+.bulk-checkbox {
+    accent-color: #555;
+    cursor: pointer;
+}
+
+.id-product {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.title-product {
+    font-weight: 500;
+}
+
+.type-product {
+    color: #666;
+}
+
+.availability-product,
+.kostPrijs-product,
+.beschikbaarheid-product {
+    text-align: right;
+}
+
+.min-product {
+    text-align: right;
+    color: #aaa;
+}
+
+.beschikbaarheid-product {
+    font-weight: 500;
+}
+
+.kostPrijs-product {
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* ---- status badges ---- */
+.status-product span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* add these classes in your Razor based on product.Status value */
+.status-in span {
+    background: #e6f4ea;
+    color: #276d3b;
+}
+
+.status-low span {
+    background: #fff3e0;
+    color: #a05c00;
+}
+
+.status-out span {
+    background: #fde8e8;
+    color: #a02020;
+}
+
+/* ---- row action buttons ---- */
+.edit-product,
+.remove-product {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #ddd;
+    transition: background 0.12s;
+}
+
+.edit-product {
+    background: #f5f5f5;
+    color: #111;
+}
+
+.edit-product:hover {
+    background: #ebebeb;
+}
+
+.remove-product {
+    background: transparent;
+    color: #b84040;
+    border-color: #f0b0b0;
+}
+
+.remove-product:hover {
+    background: #fde8e8;
+}
+
+/* ---- bulk action bar ---- */
+.productenContainer > form > .productenContainer,
+.bulk-actions {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+}
+
+.bulk-action {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #111;
+    transition: background 0.12s;
+}
+
+.bulk-action:hover {
+    background: #f0f0f0;
+}
+
+.bulk-action[value="delete"] {
+    color: #b84040;
+    border-color: #f0b0b0;
+}
+
+.bulk-action[value="delete"]:hover {
+    background: #fde8e8;
+}

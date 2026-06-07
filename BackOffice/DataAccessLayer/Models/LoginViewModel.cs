@@ -1,4 +1,4 @@
-﻿namespace DataAccessLayer.Models
+﻿namespace BackOffice.Models
 {
     public class LoginViewModel
     {

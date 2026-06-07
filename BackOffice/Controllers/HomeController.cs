@@ -1,7 +1,7 @@
+using BackOffice.DataAccessLayer.Models;
 using BackOffice.Models;
-using DataAccessLayer.Models;
-using DataAccessLayer.Repositories;
 using DataAccessLayer.Interfaces;
+using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Linq; // added for LINQ helpers
@@ -113,9 +113,10 @@ namespace BackOffice.Controllers
             return View();
         }
 
-        public IActionResult Product()
+        public IActionResult Producten()
         {
-            return View();
+            PaginatedProductViewModel vm = new(_productRepository.GetAllProducts().ToList(), null, null);
+            return View(vm);
         }
 
         public IActionResult Login()

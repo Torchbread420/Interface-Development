@@ -15,36 +15,44 @@
 <body>
     <div class="d-flex" style="min-height: 100vh;">
 
-        <!-- SIDEBAR -->
-        <nav class="sidebar">
-            <div class="sidebar-brand">
-                <i class="bi bi-gear-fill"></i>
-                <span>BackOffice</span>
-            </div>
-            <!-- Nav links: Home, Personeel, Producten, Orders -->
-            <ul class="sidebar-nav">
-                <li>
-                    <a href="@(Url.Action("Index","Home"))" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
-                        <i class="bi bi-house"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@(Url.Action("Personeel","Home"))" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "Personeel" ? "active" : "")">
-                        <i class="bi bi-people"></i>
-                        <span>Personeel</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@(Url.Action("Product","Home"))" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "Product" ? "active" : "")">
-                        <i class="bi bi-box-seam"></i>
-                        <span>Producten</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@(Url.Action("Order","Home"))" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "Order" ? "active" : "")">
-                        <i class="bi bi-cart"></i>
-                        <span>Orders</span>
+            <!-- SIDEBAR -->
+            <nav class="sidebar">
+                <div class="sidebar-brand">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>BackOffice</span>
+                </div>
+                <!-- Nav links: Home, Personeel, Producten, Orders -->
+                <ul class="sidebar-nav">
+                    <li>
+                        <a asp-controller="Home" asp-action="Index" class="active">
+                            <i class="bi bi-house"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Personeel">
+                            <i class="bi bi-people"></i>
+                            <span>Personeel</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Producten">
+                            <i class="bi bi-box-seam"></i>
+                            <span>Producten</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Order" asp-action="Index">
+                            <i class="bi bi-cart"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Uitloggen onderaan -->
+                <div class="mt-auto">
+                    <a asp-controller="Home" asp-action="Login" class="sidebar-logout">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <span>Uitloggen</span>
                     </a>
                 </li>
             </ul>

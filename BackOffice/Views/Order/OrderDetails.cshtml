@@ -1,0 +1,138 @@
+﻿@model OrderDetailsViewModel
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<link rel="stylesheet" href="~/css/orderdetails.css" asp-append-version="true" />
+
+<div class="breadcrumb">
+    <a asp-controller="Home" asp-action="Index">Home</a>
+    <span>›</span>
+    <a asp-controller="Order" asp-action="Index">Orders</a>
+    <span>›</span>
+    <span>Order #@Model.Order?.Id</span>
+</div>
+
+<div class="header-row">
+    <h3>Order #@Model.Order?.Id</h3>
+
+    <div class="status-badge @Model.Order?.OrderStatus">
+        <p>@Model.Order?.OrderStatus</p>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+
+    <div class="main-content">
+
+        <section class="card order-info-card">
+            <div class="info-block">
+                <label>Orderdatum</label>
+                <p>@Model.Order?.OrderDate om @Model.Order?.OrderTime</p>
+            </div>
+
+            <div class="info-block referentie">
+                <label>Referentie</label>
+                <p>ORD-@Model.Order?.Id.ToString("0000")</p>
+            </div>
+        </section>
+
+        <section class="card">
+
+            <div class="card-title">
+                Orderregels
+            </div>
+
+            <table class="order-table">
+
+                <thead>
+                    <tr>
+                        <th>PRODUCT</th>
+                        <th class="text-right">AANTAL</th>
+                        <th class="text-right">STUKPRIJS</th>
+                        <th class="text-right">TOTAAL</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (OrderProduct orderProduct in Model.Order.OrderProducts)
+                    {
+                        <tr>
+                            <td>@orderProduct.Product.Name</td>
+
+                            <td class="text-right">
+                                @orderProduct.Quantity
+                            </td>
+
+                            <td class="text-right">
+                                €@orderProduct.Product.Price
+                            </td>
+
+                            <td class="text-right">
+                                €@(orderProduct.Quantity* orderProduct.Product.Price)
+                            </td>
+                        </tr>
+                    }
+
+                    <tr class="summary-row">
+                        <td colspan="3"></td>
+                        <td class="text-right total-price">
+                            €@Model.TotalPrice
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </div>
+
+    <aside class="sidebar-content">
+
+        <section class="card">
+
+            <div class="card-title">
+                Klant
+            </div>
+
+            <div class="klant-info">
+
+                <div class="contact-item">
+                    <span class="profile-name">
+                        @Model.Order?.User.Name
+                    </span>
+                </div>
+
+                <div class="contact-item">
+                    <span>@Model.Order?.User.Email</span>
+                </div>
+
+                <div class="contact-item">
+                    <span>+31 @Model.Order?.User.PhoneNumber</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="card">
+
+            <div class="card-title">
+                Bezorgadres
+            </div>
+
+            <div class="address-text">
+                <strong>@Model.Order?.User.Name</strong>
+                <br />
+                <p>@Model.Order?.User.Address</p>
+            </div>
+
+        </section>
+
+    </aside>
+
+</div>

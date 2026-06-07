@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.Models;
+﻿using BackOffice.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer
@@ -28,13 +28,18 @@ namespace DataAccessLayer
                 .HasForeignKey(ws => ws.UserId)
                 .IsRequired(false);
 
-            modelBuilder.Entity<Product>()
-                .HasMany(p => p.Orders)
-                .WithMany(o => o.Products);
+            modelBuilder.Entity<OrderProduct>()
+                .HasKey(op => new { op.OrderId, op.ProductId });
 
-            modelBuilder.Entity<Part>()
-                .HasMany(p => p.Products)
-                .WithMany(p => p.Parts);
+            modelBuilder.Entity<OrderProduct>()
+                .HasOne(op => op.Order)
+                .WithMany(o => o.OrderProducts)
+                .HasForeignKey(op => op.OrderId);
+
+            modelBuilder.Entity<OrderProduct>()
+                .HasOne(op => op.Product)
+                .WithMany(p => p.OrderProducts)
+                .HasForeignKey(op => op.ProductId);
 
             base.OnModelCreating(modelBuilder);
         }
