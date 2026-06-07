@@ -100,10 +100,7 @@ html {
     color: #34a853;
 }
 
-/* ============================================
-   SNELLE ACTIES LINKS
-   Elke link is een flex-row met icoon, tekst en pijl
-   ============================================ */
+/* QUICK ACTIONS */
 .quick-action-link {
     display: flex;
     align-items: center;
@@ -111,48 +108,290 @@ html {
     padding: 12px 0;
     text-decoration: none !important;
     color: inherit !important;
-    border-bottom: 1px solid #f0f0f0; /* Subtiele scheidingslijn */
+    border-bottom: 1px solid #f0f0f0;
+}
+.quick-action-link:last-child { border-bottom: none; }
+.quick-action-link:hover {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
-    /* Laatste link heeft geen border onderaan */
-    .quick-action-link:last-child {
-        border-bottom: none;
-    }
-
-    /* Hover effect: lichte achtergrond */
-    .quick-action-link:hover {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-/* ============================================
-   MELDINGEN
-   Elke melding is een gekleurde balk met tekst en tijd
-   ============================================ */
+/* MELDINGEN */
 .melding {
     display: flex;
-    justify-content: space-between; /* Tekst links, tijd rechts */
+    justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
     border-radius: 8px;
     margin-bottom: 8px;
     font-size: 0.9rem;
 }
+.melding-warning { background-color: #fff3cd; border-left: 4px solid #ffc107; }
+.melding-info { background-color: #d1ecf1; border-left: 4px solid #0dcaf0; }
+.melding-success { background-color: #d4edda; border-left: 4px solid #198754; }
 
-/* Oranje melding: voorraad waarschuwingen */
-.melding-warning {
-    background-color: #fff3cd;
-    border-left: 4px solid #ffc107;
+/* ================================
+   Personeel page styles (improved)
+   ================================ */
+.page-breadcrumb {
+  margin: 18px 0 18px 0;
+  color: #374151;
+}
+.page-breadcrumb h1 {
+  margin: 6px 0 0 0;
+  font-weight: 600;
+  font-size: 1.45rem;
+  color: #111827;
 }
 
-/* Blauwe melding: nieuwe bestellingen */
-.melding-info {
-    background-color: #d1ecf1;
-    border-left: 4px solid #0dcaf0;
+/* card that contains tabs */
+.tabs-card {
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  border: 1px solid #e9f0f6;
 }
 
+/* header area: tabs + action */
+.tabs-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 16px;
+  margin-bottom:14px;
+  padding-bottom:8px;
+  border-bottom: 1px solid #eef4f8;
+}
+
+/* tabs nav */
+.tabs-nav {
+  list-style:none;
+  display:flex;
+  gap:12px;
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+.tabs-nav li {
+  padding:8px 12px;
+  cursor:pointer;
+  color:#6b7280;
+  border-radius:6px;
+  font-weight:500;
+  font-size:0.95rem;
+  position:relative;
+  background: transparent;
+}
+.tabs-nav li:hover { color:#111827; background:transparent; }
+
+/* active tab: subtle blue underline */
+.tabs-nav li.active {
+  color:#1f6feb;
+  font-weight:600;
+}
+.tabs-nav li.active::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -10px;
+  height: 3px;
+  background: #1f6feb;
+  border-radius: 3px;
+}
+
+/* add button */
+.add-employee {
+  background:#1f6feb;
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  box-shadow: 0 6px 18px rgba(31,111,235,0.12);
+  transition: transform .08s ease, box-shadow .12s ease;
+}
+.add-employee:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(31,111,235,0.14); }
+
+/* small subtitle */
+.subheader { color:#6b7280; margin:12px 0; font-size:0.95rem; }
+
+/* responsive grid for person cards - make cards visually separated like Figma */
+.cards-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap:22px;               /* more space between cards so they 'stand alone' */
+  margin-top: 6px;
+  align-items: start;
+  padding-bottom: 8px;
+}
+
+/* Person card - emphasize separation, rounded corners and subtle shadow */
+.person-card {
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  background:#fff;
+  border:1px solid #e6eef6;
+  padding:18px;
+  border-radius:12px;
+  min-height:120px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  transition: transform .08s ease, box-shadow .12s ease;
+}
+.person-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08); }
+.person-left { flex: 0 0 auto; }
+.person-right { flex: 1 1 auto; display:flex; flex-direction:column; justify-content:center; }
+
+.avatar {
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#2b6cb0;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:0.95rem;
+  box-shadow: inset 0 -6px 14px rgba(0,0,0,0.06);
+}
+.avatar.small { width:34px; height:34px; font-size:0.85rem; }
+
+.person-name {
+  font-weight:700;
+  margin-bottom:2px;
+  color:#111827;
+}
+.person-role {
+  color:#6b7280;
+  font-size:0.9rem;
+  margin-bottom:10px;
+}
+.person-contact .contact-item {
+  color:#6b7280;
+  font-size:0.9rem;
+  margin-bottom:6px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.person-contact i { color:#9aa6b2; font-size:0.95rem; }
+
+/* Table card */
+.table-card {
+  background:#fff;
+  border-radius:10px;
+  padding:0;
+  border:1px solid #eef4f7;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.03);
+  overflow: hidden;
+}
+
+/* Hours & Orders table */
+.hours-table, .orders-table {
+  width:100%;
+  border-collapse:collapse;
+  table-layout: fixed;
+}
+.hours-table thead th, .orders-table thead th {
+  text-align:left;
+  padding:14px 18px;
+  color:#8b95a6;
+  font-size:0.85rem;
+  border-bottom:1px solid #f1f6fb;
+  background: linear-gradient(180deg,#fbfdff,#fbfdff);
+}
+.hours-table tbody td, .orders-table tbody td {
+  padding:12px 18px;
+  border-bottom:1px solid #f7f9fb;
+  color:#374151;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* name column layout */
+.name-cell .row-left { display:flex; align-items:center; gap:10px; }
+
+/* BASE badge - neutral baseline; specific status classes override colors (placed after) */
+.badge {
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:0.82rem;
+  font-weight:600;
+  color:#475569;                 /* neutral text color by default */
+  background: rgba(148,163,184,0.06); /* very light gray-blue */
+  border: 1px solid rgba(148,163,184,0.06);
+  min-width: 88px;
+  text-align:center;
+  box-sizing:border-box;
+}
+
+/* Status specific badges: pill style like Figma
+   These rules come after the base .badge so they override colors/backgrounds */
+.badge-voltooid {
+  background-color: rgba(16,185,129,0.12);
+  color: #065f46; /* darker green for high contrast */
+  border: 1px solid rgba(16,185,129,0.18);
+}
+.badge-inbehandeling {
+  background-color: rgba(59,130,246,0.12);
+  color: #1e40af; /* darker blue */
+  border: 1px solid rgba(59,130,246,0.18);
+}
+.badge-verzonden {
+  background-color: rgba(139,92,246,0.12);
+  color: #5b21b6; /* darker purple */
+  border: 1px solid rgba(139,92,246,0.18);
+}
+.badge-geannuleerd {
+  background-color: rgba(239,68,68,0.12);
+  color: #b91c1c; /* darker red */
+  border: 1px solid rgba(239,68,68,0.18);
+}
+
+/* make status column text clearer - center in the column */
+.orders-table td.status-cell {
+  text-align: center;
+}
+
+/* hover for rows */
+.orders-table tbody tr:hover {
+  background: linear-gradient(90deg, rgba(250,253,255,0.6), rgba(250,253,255,0.6));
+}
+
+/* right column chevron for Orders table */
+.orders-table td:last-child {
+  text-align: right;
+  position: relative;
+  padding-right: 32px;
+}
+.orders-table td:last-child::after {
+  content: "›";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #cbd5e1;
+  font-weight:600;
+  font-size:1.05rem;
+}
+
+/* responsive tweaks */
+@media (max-width: 880px) {
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .tabs-header { flex-direction: column; align-items: flex-start; gap:8px; }
+  .tabs-nav li.active::after { bottom: -8px; }
+}
+
+/* Tab panes */
+.tab-pane { display:none; padding:14px 0; }
+.tab-pane.active { display:block; }
 /* Groene melding: voltooide acties */
 .melding-success {
     background-color: #d4edda;
@@ -298,7 +537,7 @@ html {
     background: transparent;
 }
 
-    /* nav row � single unit */
+    /* nav row — single unit */
     .product-subnav .nav {
         display: flex;
         gap: 24px;

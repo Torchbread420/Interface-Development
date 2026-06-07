@@ -1,0 +1,93 @@
+@model BackOffice.Models.CreateUserViewModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="page-breadcrumb">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Personeel">Personeel</a></li>
+            <li class="breadcrumb-item active">Nieuwe medewerker</li>
+        </ol>
+    </nav>
+    <h1>Nieuwe medewerker</h1>
+</div>
+
+<div class="tabs-card">
+    <form asp-action="CreateEmployee" method="post" class="p-3">
+        @Html.AntiForgeryToken()
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Naam</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Functie (UserType)</label>
+                <input asp-for="UserType" class="form-control" />
+                <span asp-validation-for="UserType" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Telefoon</label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="+31..." />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Geboortedatum</label>
+                <input asp-for="DateOfBirth" class="form-control" type="date" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Adres</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Wachtwoord</label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="col-12">
+                <h6 class="mt-3">Uren per week (Ma–Vr)</h6>
+                <div class="row g-2">
+                    <div class="col-auto">
+                        <label class="form-label small">Ma</label>
+                        <input asp-for="Ma" type="number" class="form-control" min="0" max="24" />
+                    </div>
+                    <div class="col-auto">
+                        <label class="form-label small">Di</label>
+                        <input asp-for="Di" type="number" class="form-control" min="0" max="24" />
+                    </div>
+                    <div class="col-auto">
+                        <label class="form-label small">Wo</label>
+                        <input asp-for="Wo" type="number" class="form-control" min="0" max="24" />
+                    </div>
+                    <div class="col-auto">
+                        <label class="form-label small">Do</label>
+                        <input asp-for="Do" type="number" class="form-control" min="0" max="24" />
+                    </div>
+                    <div class="col-auto">
+                        <label class="form-label small">Vr</label>
+                        <input asp-for="Vr" type="number" class="form-control" min="0" max="24" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Medewerker toevoegen</button>
+            <a asp-action="Personeel" class="btn btn-link">Annuleren</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

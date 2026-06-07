@@ -32,12 +32,18 @@ namespace DataAccessLayer.Repositories
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _context.Users.Include(u => u.Orders);
+            // include orders and work schedules so controller can read schedules
+            return _context.Users
+                .Include(u => u.Orders)
+                .Include(u => u.WorkSchedules);
         }
 
         public User? GetUserById(int id)
         {
-            return _context.Users.Include(u => u.Orders).FirstOrDefault(u => u.Id == id);
+            return _context.Users
+                .Include(u => u.Orders)
+                .Include(u => u.WorkSchedules)
+                .FirstOrDefault(u => u.Id == id);
         }
 
         public void UpdateUser(User user)
