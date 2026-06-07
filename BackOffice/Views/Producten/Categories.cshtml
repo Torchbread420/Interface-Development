@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DataAccessLayer.Models.Product>
+
+@{
+    ViewData["Title"] = "Categorieën";
+
+    var categories = (Model ?? Enumerable.Empty<DataAccessLayer.Models.Product>())
+        .GroupBy(p => p.Category ?? "Onbekend")
+        .Select(g => new
+        {
+            Name = g.Key,
+            Count = g.Count(),
+            TotalStock = g.Sum(p => p.Availability),
+            TotalValue = g.Sum(p => p.Availability * p.Price),
+            LowStockCount = g.Count(p => p.Availability <= p.MinimumAvailablility)
+        })
+        .OrderByDescending(x => x.TotalStock)
+        .ToList();
+
+    var culture = System.Globalization.CultureInfo.GetCultureInfo("nl-NL");
+}
+<head>
+    <link rel="stylesheet" href="~/css/categorieen.css" asp-append-version="true" />
+</head>
+
+<div class="breadcrumb">Home &gt; Producten &gt; Categorieën</div>
+
+<h1 class="page-title">Categorieën</h1>
+
+<div class="tabs-modern">
+    <a asp-controller="Home" asp-action="Producten" class="tab-modern">Voorraad Overzicht</a>
+    <a asp-controller="Producten" asp-action="Categories" class="tab-modern active">Categorieën</a>
+</div>
+
+@if (!categories.Any())
+{
+    <div class="empty-card">
+        <p>Geen categorieën gevonden.</p>
+    </div>
+}
+else
+{
+    <div class="category-grid">
+        @foreach (var c in categories)
+        {
+            <div class="category-card">
+                <div class="category-head">
+                    <h2>@c.Name</h2>
+                    <div class="category-count">@c.Count artikelen</div>
+                </div>
+
+                <div class="category-stats">
+                    <div class="stat-line">
+                        <div class="stat-label">Totaal voorraad</div>
+                        <div class="stat-value">@c.TotalStock.ToString("N0", culture) st.</div>
+                    </div>
+                    <div class="stat-line">
+                        <div class="stat-label">Waarde</div>
+                        <div class="stat-value">€@c.TotalValue.ToString("N2", culture)</div>
+                    </div>
+                </div>
+
+                @if (c.LowStockCount > 0)
+                {
+                    <div class="category-warning">⚠ @c.LowStockCount artikel heeft lage voorraad</div>
+                }
+            </div>
+        }
+    </div>
+}

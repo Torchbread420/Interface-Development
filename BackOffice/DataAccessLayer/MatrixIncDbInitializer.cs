@@ -40,9 +40,9 @@ namespace DataAccessLayer
 
             var products = new Product[]
             {
-                new Product { Name = "Nebuchadnezzar", Description = "Het schip waarop Neo voor het eerst de echte wereld leert kennen", Price = 10000.00m },
-                new Product { Name = "Jack-in Chair", Description = "Stoel met een rugsteun en metalen armen waarin mensen zitten om ingeplugd te worden in de Matrix via een kabel in de nekpoort", Price = 500.50m },
-                new Product { Name = "EMP (Electro-Magnetic Pulse) Device", Description = "Wapentuig op de schepen van Zion", Price = 129.99m }
+                new Product { Name = "Nebuchadnezzar", Id = 1, ImagePath = "./Test1", Availability = 500, MinimumAvailablility = 50, KostPrice = 8000.00m, SalePercentage = 0, Category = "Ship", Status = "Op voorraad", Location = "B2" , SKU = "N-1", Description = "Het schip waarop Neo voor het eerst de echte wereld leert kennen", Price = 10000.00m },
+                new Product { Name = "Jack-in Chair", Id = 2, ImagePath = "./Test2",  Availability = 0, MinimumAvailablility = 50, KostPrice = 300.00m, SalePercentage = 0, Category = "Chair", Status = "Niet op voorraad", Location = "C2", SKU = "JC-2", Description = "Stoel met een rugsteun en metalen armen waarin mensen zitten om ingeplugd te worden in de Matrix via een kabel in de nekpoort", Price = 500.50m },
+                new Product { Name = "EMP (Electro-Magnetic Pul se) Device", Id = 3, ImagePath = "./Test3",Availability = 300, MinimumAvailablility = 500, KostPrice = 100.00m, SalePercentage = 0, Status = "Laag voorraad", Category = "Weapon", Location = "D2", SKU = "E(PD-3)", Description = "Wapentuig op de schepen van Zion", Price = 129.99m }
             };
             context.Products.AddRange(products);
 
