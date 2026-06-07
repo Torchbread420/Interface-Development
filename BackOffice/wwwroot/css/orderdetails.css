@@ -1,0 +1,174 @@
+﻿.breadcrumb {
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+    .breadcrumb a {
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        color: #8ea0bb;
+    }
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+    .header-row h3 {
+        margin: 0;
+    }
+
+.status-badge {
+    display: flex;
+    align-items: center;
+}
+
+.Voltooid {
+    background: #dff7e6;
+    color: #1d8f49;
+}
+
+.In.behandeling {
+    background: #dce8ff;
+    color: #2b67e6;
+}
+
+.Verzonden {
+    background: #f0dfff;
+    color: #8a2be2;
+}
+
+.Geannuleerd {
+    background: #ffe0e0;
+    color: #d62b2b;
+}
+
+.Voltooid, .In.behandeling, .Verzonden, .Geannuleerd {
+    border-radius: 10px;
+    width: max-content;
+    padding: 5px;
+}
+
+    .Voltooid p, .In.behandeling p, .Verzonden p, .Geannuleerd p {
+        padding: 0px 10px 0px 10px;
+        margin: 0px;
+    }
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.main-content,
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+
+.order-info-card {
+    display: grid;
+    padding: 24px;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.info-block label {
+    color: #8ea0bb;
+}
+
+.info-block.referentie {
+    grid-column: 3;
+    text-align: right;
+}
+
+.info-block p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.card-title {
+    padding: 20px 20px 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.order-table {
+    font-size: 0.8rem;
+}
+
+.order-table thead {
+    background: #f7f9fc;
+}
+
+.order-table th {
+    padding: 10px 24px;
+    font-weight: 700;
+    color: #61728da1;
+}
+
+.order-table td {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #edf1f6a1;
+    color: #334155;
+}
+
+    .summary-row td:last-of-type {
+        padding-bottom: 20px;
+        font-size: 1rem;
+    }
+
+.total-price {
+    font-weight: 600;
+}
+
+.klant-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.contact-item {
+    display: flex;
+    padding: 0 24px;
+    color: #64748b;
+}
+
+    .contact-item:last-of-type {
+        margin-bottom: 15px;
+    }
+
+.profile-name {
+    font-weight: 400;
+    color: black;
+}
+
+.address-text {
+    padding: 0px 20px 20px 20px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+.address-text strong {
+    font-weight: 400;
+    color: black;
+}
+.address-text p {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.text-right {
+    text-align: right;
+}

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Models
+namespace BackOffice.Models
 {
     public class Product
     {
@@ -38,6 +38,7 @@ namespace DataAccessLayer.Models
 
         public string Status {  get; set; }
 
+        public List<OrderProduct> OrderProducts { get; set; } = new();
         public ICollection<Order> Orders { get; } = new List<Order>();
 
         public ICollection<Part> Parts { get; } = new List<Part>();

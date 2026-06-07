@@ -5,18 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Models
+namespace BackOffice.Models
 {
     public class Order
     {
         public int Id { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public string? Name { get; set; }
+
+        public TimeOnly OrderTime {  get; set; }
+
+        public DateOnly OrderDate { get; set; }
+
+        public required string OrderStatus { get; set; }
 
         public int UserId { get; set; }
-        
-        public User User { get; set; } = null!;
 
-        public ICollection<Product> Products { get; } = new List<Product>();
+        public required User User { get; set; }
+
+        public required List<OrderProduct> OrderProducts { get; set; }
+
     }
 }
