@@ -16,14 +16,9 @@ namespace DataAccessLayer
             {
                 return;   // DB has been seeded
             }
-
-            // TODO: Hier moet ik nog wat namen verzinnen die betrekking hebben op de matrix.
-            // - Denk aan de m3 boutjes, moertjes en ringetjes.
-            // - Denk aan namen van schepen
-            // - Denk aan namen van vliegtuigen            
+        
             var users = new User[]
             {
-                new User { Name = ".", Password = ".", Email = "example@matrix.com", Address = "0612 Heml 1 Spanjestraat", DateOfBirth = DateOnly.Parse("1703-12-05"), PhoneNumber = 0610019560, UserType = null },
                 new User { Name = "Neo", Password = "password1", Email = "neo@matrix.com", Address = "123 Elm St", DateOfBirth = DateOnly.Parse("1995-03-12"), PhoneNumber = 1234567890, UserType = null },
                 new User { Name = "Morpheus", Password = "password2", Email = "morpheus@matrix.com", Address = "456 Oak St", DateOfBirth = DateOnly.Parse("1990-07-20"), PhoneNumber = 0987654321, UserType = null },
                 new User { Name = "Trinity", Password = "password3", Email = "trinity@matrix.com", Address = "789 Pine St", DateOfBirth = DateOnly.Parse("1992-11-30"), PhoneNumber = 01234957693, UserType = null }
