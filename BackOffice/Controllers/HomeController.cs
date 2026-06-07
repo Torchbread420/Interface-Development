@@ -81,28 +81,15 @@ namespace BackOffice.Controllers
                 weekHours.Add(w);
             }
 
-            // Map orders to lightweight list items and assign a variety of statuses
-            var ordersList = orders.Select((o, idx) => new OrderListItem
-            {
-                OrderId = o.Id,
-                Name = o.Products != null && o.Products.Any() ? string.Join(", ", o.Products.Select(p => p.Name).Take(1)) : $"Order #{o.Id}",
-                CustomerName = o.User?.Name ?? "Onbekend",
-                Status = idx switch
-                {
-                    0 => "Voltooid",
-                    1 => "In behandeling",
-                    2 => "Verzonden",
-                    3 => "Geannuleerd",
-                    _ => "In behandeling"
-                },
-                Amount = o.Products?.Any() == true ? o.Products.Sum(p => p.Price) : 0m
-            }).ToList();
-
             var vm = new PersoneelViewModel
             {
                 Users = users,
                 WeekHours = weekHours,
-                OrdersList = ordersList
+                Orders = orders.Select(o => new OrderWithTotal
+                {
+                    Order = o,
+                    TotalPrice = o.OrderProducts.Sum(op => op.Quantity * op.Product.Price)
+                }).ToList()
             };
 
             return View(vm);
@@ -192,11 +179,11 @@ namespace BackOffice.Controllers
             };
 
             // create schedule entries (Ma..Vr)
-            user.WorkSchedules.Add(new DataAccessLayer.Models.WorkSchedule { DayIndex = 0, Hours = model.Ma });
-            user.WorkSchedules.Add(new DataAccessLayer.Models.WorkSchedule { DayIndex = 1, Hours = model.Di });
-            user.WorkSchedules.Add(new DataAccessLayer.Models.WorkSchedule { DayIndex = 2, Hours = model.Wo });
-            user.WorkSchedules.Add(new DataAccessLayer.Models.WorkSchedule { DayIndex = 3, Hours = model.Do });
-            user.WorkSchedules.Add(new DataAccessLayer.Models.WorkSchedule { DayIndex = 4, Hours = model.Vr });
+            user.WorkSchedules.Add(new BackOffice.Models.WorkSchedule { DayIndex = 0, Hours = model.Ma });
+            user.WorkSchedules.Add(new BackOffice.Models.WorkSchedule { DayIndex = 1, Hours = model.Di });
+            user.WorkSchedules.Add(new BackOffice.Models.WorkSchedule { DayIndex = 2, Hours = model.Wo });
+            user.WorkSchedules.Add(new BackOffice.Models.WorkSchedule { DayIndex = 3, Hours = model.Do });
+            user.WorkSchedules.Add(new BackOffice.Models.WorkSchedule { DayIndex = 4, Hours = model.Vr });
 
             _userRepository.AddUser(user);
 

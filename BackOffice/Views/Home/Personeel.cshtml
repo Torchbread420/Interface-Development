@@ -113,9 +113,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var o in Model.OrdersList)
+                        @foreach (var o in Model.Orders)
                         {
-                            var statusClass = o.Status switch {
+                            var statusClass = o.Order.OrderStatus switch {
                                 "Voltooid" => "badge-voltooid",
                                 "In behandeling" => "badge-inbehandeling",
                                 "Verzonden" => "badge-verzonden",
@@ -123,10 +123,10 @@
                                 _ => ""
                             };
                             <tr>
-                                <td>@o.Name</td>
-                                <td>@o.CustomerName</td>
-                                <td class="status-cell"><span class="badge @statusClass">@o.Status</span></td>
-                                <td>@(o.Amount == 0 ? "—" : o.Amount.ToString("C"))</td>
+                                <td>@o.Order.Name</td>
+                                <td>@o.Order.User.Name</td>
+                                <td class="status-cell"><span class="badge @statusClass">@o.Order.OrderStatus</span></td>
+                                <td>€@o.TotalPrice</td>
                             </tr>
                         }
                     </tbody>

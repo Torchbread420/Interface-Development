@@ -17,13 +17,13 @@ namespace BackOffice.Models
 
         public DateOnly OrderDate { get; set; }
 
-        public required string OrderStatus { get; set; }
+        public  string OrderStatus { get; set; }
 
         public int UserId { get; set; }
 
-        public required User User { get; set; }
+        public User User { get; set; }
 
-        public required List<OrderProduct> OrderProducts { get; set; }
+        public List<OrderProduct> OrderProducts { get; set; }
 
     }
 }

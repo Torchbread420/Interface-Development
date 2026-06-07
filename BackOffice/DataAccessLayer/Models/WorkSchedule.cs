@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DataAccessLayer.Models
+namespace BackOffice.Models
 {
     public class WorkSchedule
     {
