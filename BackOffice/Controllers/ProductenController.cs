@@ -30,7 +30,7 @@ namespace BackOffice.Controllers
             Product? product = viewModel.ProductEditForm;
             if (product == null) return NotFound();
             _productService.UpdateProduct(product);
-            return RedirectToAction("Home", "Producten");
+            return RedirectToAction("Producten", "Home");
         }
 
         // Remove a product
@@ -38,7 +38,7 @@ namespace BackOffice.Controllers
         public IActionResult Remove(int id)
         {
             _productService.DeleteProductById(id);
-            return RedirectToAction("Home", "Producten");
+            return RedirectToAction("Producten", "Home");
         }
 
         // Handle bulk checkbox selection
@@ -51,7 +51,7 @@ namespace BackOffice.Controllers
             if (action == "delete")
             {
                 _productService.DeleteProductsById(selectedIds);
-                return RedirectToAction("Home", "Producten");
+                return RedirectToAction("Producten", "Home");
             }
             BulkEdit bulkEdit = new(selectedIds);
             PaginatedProductViewModel productenViewModel = new(productService.GetAllProducts().ToList(), null, bulkEdit);
@@ -63,7 +63,7 @@ namespace BackOffice.Controllers
         {
             if (bulkEdit == null) return NotFound();
             _productService.EditProducts(bulkEdit);
-            return RedirectToAction("Home", "Producten");
+            return RedirectToAction("Producten", "Home");
         }
 
         [HttpGet]

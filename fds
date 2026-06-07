@@ -1,0 +1,384 @@
+[33mcommit dae9c10a72f66ea606c8c9a88209633c3bd40d97[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Torchbread <dylan.lomas2005@gmail.com>
+Date:   Sun Jun 7 17:15:53 2026 +0200
+
+    Main Hotfix
+
+[33mcommit 80fe21c6a85f24d51ef3e7f3ba67bcb8e9adb4b1[m
+Merge: ba6b346 7b90334
+Author: Sem-delil <2406470delil@zuyd.nl>
+Date:   Sun Jun 7 16:45:34 2026 +0200
+
+    Merge pull request #33 from Torchbread420/Sem-personeel
+    
+    Opzet personeel pagina voltooid
+
+[33mcommit 7b90334863f1cc99376eb70cf7a4a4548eaf9599[m[33m ([m[1;31morigin/Sem-personeel[m[33m)[m
+Merge: b96b211 ba6b346
+Author: Sem-delil <2406470delil@zuyd.nl>
+Date:   Sun Jun 7 16:45:25 2026 +0200
+
+    Merge branch 'main' into Sem-personeel
+
+[33mcommit ba6b3465f3e1cac82157cbe228e03931d684de37[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Sun Jun 7 16:39:54 2026 +0200
+
+    fixed:
+    - link to model fixed
+    - product link fixed
+    - personeel link fixed
+
+[33mcommit b96b2113f16df2e15aa9d77280ba33164f98b684[m
+Author: Semdelil <2406470delil@zuyd.nl>
+Date:   Sun Jun 7 16:37:37 2026 +0200
+
+    Op zet personeel pagina voltooid
+
+[33mcommit 9ba4061636fab17d1687d130c70c826d1bdb57ac[m
+Merge: 7527eb2 f3d9b0a
+Author: Torchbread <105909461+Torchbread420@users.noreply.github.com>
+Date:   Sun Jun 7 16:27:56 2026 +0200
+
+    Merge pull request #29 from Torchbread420/Order
+    
+    Create Orderpage & Functionality
+
+[33mcommit f3d9b0a172ae69260789e5d164bc3fd34014816f[m[33m ([m[1;31morigin/Order[m[33m)[m
+Merge: 7407ba9 7527eb2
+Author: Torchbread <105909461+Torchbread420@users.noreply.github.com>
+Date:   Sun Jun 7 16:27:40 2026 +0200
+
+    Merge branch 'main' into Order
+
+[33mcommit 7527eb2b669afc6163927351b464a5f57bde96ad[m
+Merge: 7c64ae2 a9bf9b8
+Author: Torchbread <105909461+Torchbread420@users.noreply.github.com>
+Date:   Sun Jun 7 16:18:53 2026 +0200
+
+    Merge pull request #32 from Torchbread420/Product-merging
+    
+    Product merging
+
+[33mcommit 7407ba93a1cb9a12a95dc19125fb04cd7b72ad5b[m
+Author: Torchbread <dylan.lomas2005@gmail.com>
+Date:   Sun Jun 7 14:45:47 2026 +0200
+
+    Fixed OrderDetails Styling & Additionally hotfixed Orders on Homepage
+
+[33mcommit 4748eb137f1211b158cad0e709b1a21de0b168b3[m[33m ([m[1;32mOrder[m[33m)[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Fri Jun 5 23:15:29 2026 +0200
+
+    Fixed OrderPage Styling
+
+[33mcommit f1623e31250408b853aead69a10f8d7193e62d5e[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Fri Jun 5 21:32:28 2026 +0200
+
+    Added filtering of Orders on OrderPage
+
+[33mcommit d65758abea612a757537288a746fa86c1546c8ee[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Fri Jun 5 20:15:11 2026 +0200
+
+    Removed Part & Added OrderDetails
+
+[33mcommit aa0e7e802e3897d04f354b3d9ed7aee47aa2213d[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Fri Jun 5 18:50:02 2026 +0200
+
+    Added OrderView & Setup OrderDetails
+
+[33mcommit a9bf9b8c2d172df91756f0aa2b46ca397692ef27[m[33m ([m[1;31morigin/Product-merging[m[33m, [m[1;32mProduct-merging[m[33m)[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 17:18:10 2026 +0200
+
+    small bufix:
+    re added class of sem & fixed TypeError
+
+[33mcommit cdd9d16265b4c5a87683cc18cd8f47ba8843ed1d[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 17:15:09 2026 +0200
+
+    added lucas seachfunctie
+
+[33mcommit 157592dc3ade83fbb282ee286e0a01fee43cbe53[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 16:58:59 2026 +0200
+
+    adderd Location to Edit product form
+
+[33mcommit 3dc51966fee01d289940e33741e7adea43254a63[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 16:50:37 2026 +0200
+
+    added css of lucas
+
+[33mcommit 2c2ec850dba1a760be5a387e875c49059f0b920a[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 16:47:35 2026 +0200
+
+    cattegoiien van lucas toegevoegd ( zonder css )
+
+[33mcommit 61e2860ebfc512d85234f46b85b954ea5bcb59cc[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 16:38:29 2026 +0200
+
+    updated the Status count
+
+[33mcommit 3c3f45520aa8f8334b0b2408fea6ee546dec369c[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 16:18:28 2026 +0200
+
+    added:
+    extra paths to HomeController + redirect from ProductenViewModel to Paginated...
+    complete merge of CRUD + bulk into producten
+    removed:
+    js script for product anbd moved to product view
+    proudctenViewmodel deleted
+
+[33mcommit 9ccd53383934d1da48e193414f8e7d035fadffa6[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:36:51 2026 +0200
+
+    temporary merge the CRUD
+
+[33mcommit eb443f60154b90734fa238020cdc5acb02fde3af[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:26:41 2026 +0200
+
+    added _bulk & _edit Views
+
+[33mcommit 2eb646a4d9f185ca4960c6c9b251825d38e72c83[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:24:08 2026 +0200
+
+    added more content to DBINit for product
+
+[33mcommit c0f57e33e96f49d5d98021b2ca961577b569fdae[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:17:52 2026 +0200
+
+    added methods to repositoey and fxed some path problems
+
+[33mcommit 12c03b01a323217c5e8f42fbc53d8d4951e55f23[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:15:58 2026 +0200
+
+    added some product interface and added path
+
+[33mcommit c75062cf5a723d3b65950a06d2cb27b65e90b03b[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:13:45 2026 +0200
+
+    added sem css
+
+[33mcommit 60ce7431bffe356e04384b6c3b0d8209a378eefd[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:11:15 2026 +0200
+
+    added css from xavier + updated paths
+
+[33mcommit 279aa318ca11a16214577d015de6b4c23549faed[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:08:15 2026 +0200
+
+    add xavier js code
+
+[33mcommit 38a241b4f0f1aa5922722295d35e9b1c83fb228e[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:06:02 2026 +0200
+
+    add xavier producten controller
+
+[33mcommit 456f983d76dadc636c001398d5c8b71dcf37624e[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:05:35 2026 +0200
+
+    added bulkEdit and productenviewmodel from xavier
+
+[33mcommit 0b63cd9d5a227c3eba2ab56bd51d07af070823f2[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 15:00:14 2026 +0200
+
+    added Xavier product podel
+
+[33mcommit c19c04cef71ffec86592264403b0a0e92d079496[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 14:51:17 2026 +0200
+
+    added ViewModel van sem
+
+[33mcommit c0235aba2c0566ceb7bdc59165a685c3b55373d4[m
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Fri Jun 5 14:46:54 2026 +0200
+
+    producten overzicht van zem pakken
+
+[33mcommit bfa721f54ca239653555854e7cf6e1b4037a399e[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Thu Jun 4 14:07:59 2026 +0200
+
+    Setup Orderpage foundation & Updated namespaces
+
+[33mcommit 7c64ae27f50ab44d15187f346b7560186feefe4c[m[33m ([m[1;32mSem-personeel[m[33m)[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Thu Jun 4 11:14:12 2026 +0200
+
+    Fixed Sanders Code
+
+[33mcommit e11ecca6aad55d8b162ce7c771e28bb469d05932[m
+Merge: afe1077 d6cce53
+Author: Torchbread <105909461+Torchbread420@users.noreply.github.com>
+Date:   Thu Jun 4 10:13:42 2026 +0200
+
+    Merge pull request #28 from Torchbread420/Login
+    
+    Create Loginpage + Functionality
+
+[33mcommit d6cce537735b2aac5dfbe1a5fd62e0ea9fbc5562[m
+Merge: dbd3bd9 afe1077
+Author: Torchbread <105909461+Torchbread420@users.noreply.github.com>
+Date:   Thu Jun 4 10:12:04 2026 +0200
+
+    Merge branch 'main' into Login
+
+[33mcommit afe1077201acda4c26fda32ea92e56ce2861e0dc[m
+Merge: 74aeb22 cce1a2d
+Author: Sander Kleijnen <kleijnensander9@gmail.com>
+Date:   Thu Jun 4 09:54:26 2026 +0200
+
+    Merge pull request #27 from Torchbread420/Sander_HomePage
+    
+    Add homepage with sidebar layout and statistics cards
+
+[33mcommit cce1a2dc15f9da6991f05f1be802330ad17134bf[m
+Author: Sander Kleijnen <2403114kleijnen@zuyd.nl>
+Date:   Thu Jun 4 09:50:28 2026 +0200
+
+    Add complete homepage with dynamic stats, chart, notifications and orders table
+
+[33mcommit dbd3bd99f8e7edf4fbcf62ac328daaf0ff268f17[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue Jun 2 13:36:47 2026 +0200
+
+    Added Error Handling
+
+[33mcommit 89a1360503b6881e6323ee9c1bd867d80ed809b8[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue Jun 2 12:04:47 2026 +0200
+
+    Added Sign In function & seeded Users
+
+[33mcommit 8170689b4aea284cb48f994c3c977628a21974c5[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue Jun 2 11:03:42 2026 +0200
+
+    Added Login Page & Renamed Customer to User
+
+[33mcommit 79f7c4d53182193f8e75f551b153a08d22aea6a0[m
+Author: Sander Kleijnen <2403114kleijnen@zuyd.nl>
+Date:   Mon Jun 1 21:37:56 2026 +0200
+
+    Add homepage with sidebar layout and statistics cards
+
+[33mcommit 74aeb22f2235a6280cdaa1f66ef25bf65e80bcb7[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Mon Jun 1 10:45:50 2026 +0200
+
+    Fixed Seeding & Use of in memory Database
+
+[33mcommit 52c8327388a2abe4096d2835b15f4eeaaf1a2c76[m
+Merge: 4848fda 88dab7f
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Thu May 28 12:33:03 2026 +0200
+
+    Merge pull request #13 from Torchbread420/Producten-CRUD+Bulk
+    
+    Producten template toevoegen + gitignore atempt 6
+
+[33mcommit 88dab7f50cd62b1683f67cac8df059996d40b347[m
+Merge: 5b7bfed 4848fda
+Author: BeetleBeast <78571657+BeetleBeast@users.noreply.github.com>
+Date:   Thu May 28 12:21:37 2026 +0200
+
+    Merge branch 'main' into Producten-CRUD+Bulk
+
+[33mcommit 4848fdab92774f634e94b7c95844de7068183097[m
+Author: LAPTOP003 <xkeleter3@gmail.com>
+Date:   Thu May 28 12:01:11 2026 +0200
+
+    hotfix gitgnore problems
+    update gitignore and folder
+    ( atempt V7 )
+
+[33mcommit 5b7bfedf30a321ae2f5010089eb583deef818109[m
+Author: LAPTOP003 <xkeleter3@gmail.com>
+Date:   Thu May 28 11:59:50 2026 +0200
+
+    hotfix to gitignore ( atempt 7 )
+
+[33mcommit 75cc83f464d0dc2cd3ec187a8e257acd5d7b9e7e[m
+Author: LAPTOP003 <xkeleter3@gmail.com>
+Date:   Thu May 28 11:54:22 2026 +0200
+
+    added a fix to gitignore ( fix atempt 6 )
+
+[33mcommit e0123775e7b879adf0276d3c78286b36fa9c7e62[m
+Author: LAPTOP003 <xkeleter3@gmail.com>
+Date:   Thu May 28 11:52:38 2026 +0200
+
+    feat(producten):
+    Added  producten controller
+    Added producten page
+    added basic html for product
+    added empty list of products inside controller
+
+[33mcommit abb134f5586a66d3f62108cbfde6292d8fefae94[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue May 26 11:16:05 2026 +0200
+
+    fixed a whoopsie
+
+[33mcommit e8b337c570ca5f48b37762a1c236bfeb380cb28f[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue May 26 11:15:34 2026 +0200
+
+    updated .gitignore
+
+[33mcommit a382baccd726eb4d14e988e1dfe2183402c34eaf[m
+Author: LAPTOP003 <xkeleter3@gmail.com>
+Date:   Tue May 26 11:14:07 2026 +0200
+
+    updated gitIignore atempt 3
+
+[33mcommit 59cd268a56e13d23d362cc7d60e6f4aab6466797[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue May 26 11:11:41 2026 +0200
+
+    updated gitignore
+
+[33mcommit 9041aa7db29a1f67aca3c516bd0e6fa90601d4e3[m
+Author: LAPTOP003 <xkeleter3@gmail.com>
+Date:   Tue May 26 11:07:20 2026 +0200
+
+    updated git ignore
+
+[33mcommit d1938eb113f59761c9bf428ca55a5c09f4faec13[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue May 26 11:04:37 2026 +0200
+
+    Add .gitignore
+
+[33mcommit adc2fc45e9560dbf5cb770de1e3afb072d954be2[m
+Author: Torchbread <2506519lomas@zuyd.nl>
+Date:   Tue May 26 11:00:09 2026 +0200
+
+    init codebase
+
+[33mcommit e489eb2f20944c4236d47f00619b7f5690726c34[m
+Author: Torchbread <105909461+Torchbread420@users.noreply.github.com>
+Date:   Tue May 26 10:36:02 2026 +0200
+
+    Initial commit
